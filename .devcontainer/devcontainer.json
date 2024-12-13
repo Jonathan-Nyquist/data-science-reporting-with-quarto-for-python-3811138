@@ -14,7 +14,8 @@
       "extensions": [
         "GitHub.github-vscode-theme",
         "ms-toolsai.jupyter",
-        "ms-python.python"
+        "ms-python.python",
+        "quarto.quarto"
         // Additional Extensions Here
       ]
     }

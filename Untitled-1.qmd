@@ -2,7 +2,7 @@
 title: "Well, hello Word!!"
 format:
   docx:
-    reference-doc: References-Styles.docx
+    reference-doc: Reference-Styles.docx
     toc: true
     number-sections: true
 ---

@@ -1,6 +1,10 @@
 ---
-title: "Untitled"
-format: html
+title: "Word Doc Works!!"
+format:
+  docx:
+    toc: true
+    number-sections: true
+    highlight-style: github
 ---
 
-Hello world
+Well, I should be a word doc

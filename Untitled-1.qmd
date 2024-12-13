@@ -10,6 +10,7 @@ format:
 # Heading 1
 
 ```{python}
+# | echo: false
 from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
 from plotnine.data import mtcars
 
@@ -25,4 +26,4 @@ Well, I should be a word doc with weirdly styled text.
 
 ## Subheading 1
 
-And this sentence will contain an inline number: `python len(mtcars.index)`
+And this sentence will contain an inline number: `{python} len(mtcars.index)`

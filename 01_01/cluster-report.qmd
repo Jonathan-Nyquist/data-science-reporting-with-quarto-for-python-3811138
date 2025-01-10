@@ -1,0 +1,23 @@
+---
+title: "Cluster Report"
+format: docx
+---
+
+```{python}
+## ---- clean data pseudocode
+
+## ---- cluster pseudocode
+
+## ---- analysis pseudocode
+n_misclassifications = ...
+```
+
+Our model misclassified species `python n_misclassifications` of the time.
+
+```{python}
+# ---- visualisation pseudocode
+```
+
+
+
+

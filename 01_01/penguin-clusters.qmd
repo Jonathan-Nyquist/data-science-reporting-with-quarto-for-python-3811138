@@ -1,0 +1,10 @@
+---
+title: "Penguin clusters"
+format: html
+---
+
+The penguins dataset
+
+```{python}
+
+```

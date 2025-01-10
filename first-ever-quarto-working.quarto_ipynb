@@ -1,0 +1,63 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Well, hello Word!!\"\n",
+        "format:\n",
+        "  docx:\n",
+        "    reference-doc: Reference-Styles.docx\n",
+        "    toc: true\n",
+        "    number-sections: true\n",
+        "---\n",
+        "\n",
+        "\n",
+        "# Heading 1\n"
+      ],
+      "id": "2d7228d0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# | echo: false\n",
+        "from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap\n",
+        "from plotnine.data import mtcars\n",
+        "\n",
+        "(\n",
+        "    ggplot(mtcars, aes(\"wt\", \"mpg\", color=\"factor(gear)\"))\n",
+        "    + geom_point()\n",
+        "    + stat_smooth(method=\"lm\")\n",
+        "    + facet_wrap(\"gear\")\n",
+        ")"
+      ],
+      "id": "fe678cf0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Well, I should be a word doc with weirdly styled text.\n",
+        "\n",
+        "## Subheading 1\n",
+        "\n",
+        "And this sentence will contain an inline number: `{python} len(mtcars.index)`"
+      ],
+      "id": "4d9ba823"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/home/vscode/.local/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

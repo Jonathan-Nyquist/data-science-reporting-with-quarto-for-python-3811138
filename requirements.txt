@@ -4,3 +4,4 @@ plotnine
 scikit-misc
 sklearn
 palmerpenguins
+jupyter-cache

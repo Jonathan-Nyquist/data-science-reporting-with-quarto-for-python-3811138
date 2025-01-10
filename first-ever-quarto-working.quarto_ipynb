@@ -16,7 +16,7 @@
         "\n",
         "# Heading 1\n"
       ],
-      "id": "2d7228d0"
+      "id": "7e36a4ce"
     },
     {
       "cell_type": "code",
@@ -33,7 +33,7 @@
         "    + facet_wrap(\"gear\")\n",
         ")"
       ],
-      "id": "fe678cf0",
+      "id": "0ca1897f",
       "execution_count": null,
       "outputs": []
     },
@@ -47,15 +47,14 @@
         "\n",
         "And this sentence will contain an inline number: `{python} len(mtcars.index)`"
       ],
-      "id": "4d9ba823"
+      "id": "61f2ae61"
     }
   ],
   "metadata": {
     "kernelspec": {
-      "name": "python3",
+      "display_name": "Python 3",
       "language": "python",
-      "display_name": "Python 3 (ipykernel)",
-      "path": "/home/vscode/.local/share/jupyter/kernels/python3"
+      "name": "python3"
     }
   },
   "nbformat": 4,

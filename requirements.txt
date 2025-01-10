@@ -1,7 +1,5 @@
 # Specify Python package requirements for your project here (e.g., Mako==1.1.1). If your project doesn't require these, you can leave this file unchanged or delete it.
-pandas==2.2
-plotnine==0.14.4
+pandas
+plotnine
 scikit-misc
 sklearn
-jupyter
-palmerpenguins

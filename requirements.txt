@@ -3,3 +3,4 @@ pandas
 plotnine
 scikit-misc
 sklearn
+palmerpenguins

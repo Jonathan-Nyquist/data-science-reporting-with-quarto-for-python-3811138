@@ -6,9 +6,6 @@ color:
   foreground: dark-grey
   primary: black
 
-logo: 
-  medium: logo.png
-
 typography:
   fonts:
     - family: Jura

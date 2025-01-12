@@ -1,6 +1,7 @@
 ---
-title: "Multiple Formats"
+title: "Basic html page"
 format: html
-brand: 01_02/_brand.yml
+brand: _brand.yml
 ---
 
+Text file

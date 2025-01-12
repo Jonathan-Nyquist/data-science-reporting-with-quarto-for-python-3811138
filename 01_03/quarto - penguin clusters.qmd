@@ -1,0 +1,127 @@
+---
+jupyter: python3
+editor:
+  render-on-save: true
+execute:
+  cache: false
+---
+
+# Live Previewing
+
+I want to prove this is live previewing
+
+```{python}
+import random
+print(random.randint(0, 999999))
+```
+
+# Palmer Penguins
+
+Let's take a gander at the penguins dataset:
+
+```{python}
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+pd.options.mode.chained_assignment = None
+
+
+penguins = load_penguins()
+penguins.head()
+```
+
+Let's clean and visualise our variables of interest:
+
+```{python}
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+
+# Drop rows with missing values
+penguins_cleaned = penguins.dropna()
+
+(
+    ggplot(penguins_cleaned, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```
+
+## KMeans clustering
+
+Let's see if these two variables are sufficient to identify penguin species with KMeans.
+
+```{python}
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+selected_features = ["bill_length_mm", "flipper_length_mm"]
+
+features = penguins_cleaned.loc[:, selected_features]
+
+scaler = StandardScaler()
+features_scaled = scaler.fit_transform(features)
+
+# K-Means Clustering
+kmeans = KMeans(n_clusters=3)
+# poor model kmeans = KMeans(n_clusters=3, algorithm="elkan", n_init=1, max_iter=1)
+
+# TODO: Get help on SettingWithCopyWarning error
+penguin_predictions = kmeans.fit_predict(features_scaled)
+penguins_cleaned.loc[:, "cluster"] = penguin_predictions
+```
+
+Let's match up the clusters to the species by the cluster containing most predictions
+
+```{python}
+cluster_species = penguins_cleaned.groupby(
+    "species")["cluster"].agg(lambda x: x.value_counts().index[0])
+
+cluster_species_df = cluster_species.reset_index()
+
+penguins_cleaned['cluster'] = penguins_cleaned['cluster'].astype(str)
+cluster_species_df['cluster'] = cluster_species_df['cluster'].astype(str)
+
+penguins_cleaned.loc[:, "cluster"] = penguins_cleaned["cluster"].map(
+    cluster_species_df.set_index("cluster")["species"])
+
+cols_compare = ["species",
+                "cluster", "bill_length_mm", "flipper_length_mm"]
+penguins_selected = penguins_cleaned[cols_compare]
+
+penguins_selected = penguins_selected.rename(columns={
+    "species": "actual_species", "cluster": "predicted_species"})
+
+penguins_crosstabbed = pd.crosstab(penguins_selected['predicted_species'],
+                                   penguins_selected['actual_species'])
+
+penguins_crosstabbed_mismatch = penguins_crosstabbed.copy(deep=True)
+
+np.fill_diagonal(penguins_crosstabbed_mismatch.values, 0)
+
+penguins_crosstabbed.sum().sum()
+```
+
+Out of `{python} penguins_crosstabbed.sum().sum().item()` penguins, our model misclassified only `{python} penguins_crosstabbed_mismatch.sum().sum().item() / penguins_crosstabbed.sum().sum().item()`% of the penguins.
+
+```{python}
+penguins_clust_long = pd.melt(penguins_selected,
+                              id_vars=["bill_length_mm", "flipper_length_mm"],
+                              var_name="measure",
+                              value_name="group")
+
+(
+    ggplot(penguins_clust_long, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(group)"))
+    + geom_point()
+    + facet_wrap("measure")
+)
+```
+
+```{python}
+penguins_crosstabbed = pd.crosstab(penguins_selected['predicted_species'],
+                                   penguins_selected['actual_species'])
+
+penguins_crosstabbed_mismatch = penguins_crosstabbed.copy(deep=True)
+
+np.fill_diagonal(penguins_crosstabbed_mismatch.values, 0)
+
+```

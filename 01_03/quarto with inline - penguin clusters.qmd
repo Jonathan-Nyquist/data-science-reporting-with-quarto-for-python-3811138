@@ -100,7 +100,7 @@ np.fill_diagonal(penguins_crosstabbed_mismatch.values, 0)
 penguins_crosstabbed.sum().sum()
 ```
 
-Let's now visualise how well the clustering worked:
+Out of `{python} penguins_crosstabbed.sum().sum().item()` penguins, our model misclassified only `{python} penguins_crosstabbed_mismatch.sum().sum().item() / penguins_crosstabbed.sum().sum().item()`% of the penguins.
 
 ```{python}
 penguins_clust_long = pd.melt(penguins_selected,
@@ -114,27 +114,4 @@ penguins_clust_long = pd.melt(penguins_selected,
     + geom_point()
     + facet_wrap("measure")
 )
-```
-
-
-# Slow notebooks
-
-
-```{python}
-import random
-import time
-from plotnine import geom_tile, scale_fill_gradient, theme_minimal, labs
-
-# time.sleep(10)
-print(random.randint(0, 999999))
-
-matrix_size = 10000
-random_data_df = pd.DataFrame(
-    np.random.randint(0, 10, size=(matrix_size, matrix_size)))
-
-# Melt the DataFrame for plotting
-df_melted = random_data_df.stack().reset_index()
-df_melted.columns = ['x', 'y', 'value']
-
-df_melted
 ```

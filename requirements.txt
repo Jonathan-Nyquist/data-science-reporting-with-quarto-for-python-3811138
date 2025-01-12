@@ -5,3 +5,4 @@ scikit-misc
 sklearn
 palmerpenguins
 jupyter-cache
+lorem_text

@@ -14,7 +14,7 @@
   "editor.useTabStops": true,
   "emmet.triggerExpansionOnTab": true,
   "explorer.openEditors.visible": 0,
-  "files.autoSave": "afterDelay",
+  "files.autoSave": "off",
   "screencastMode.onlyKeyboardShortcuts": true,
   "terminal.integrated.fontSize": 18,
   "workbench.colorTheme": "Visual Studio Dark",

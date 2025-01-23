@@ -1,0 +1,23 @@
+---
+title: "Hello Quarto"
+format: html
+---
+
+```{python}
+# | echo: false
+import random
+random_big = random.randint(1, 999) * 1E6
+
+random_small = random.randint(1, 500)
+```
+
+This is an example Quarto document with **formatted text**, inline python values like (`{python} random_small + random_big`) and code output
+
+```{python}
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+
+penguins_cleaned = penguins.dropna()
+
+penguins.head()
+```

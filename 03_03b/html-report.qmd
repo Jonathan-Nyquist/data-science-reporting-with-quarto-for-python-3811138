@@ -9,8 +9,6 @@ These are the standard markdown formats available in almost all Markdown impleme
 
 - *italics*
 
-dd
-
 - **bold**
 
 - Enumerate and numbered lists

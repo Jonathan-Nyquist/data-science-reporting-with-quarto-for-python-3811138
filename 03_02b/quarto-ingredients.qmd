@@ -1,8 +1,11 @@
 ---
 title: Palmer Penguins Report
-format: html
-echo: false
+format: revealjs
+echo: true
 ---
+
+## About penguins
+
 ```{python}
 from palmerpenguins import load_penguins
 import pandas as pd
@@ -18,9 +21,13 @@ The *palmer penguins* dataset contains information about `{python} len(penguins)
 
 Image Credit: Allison Horst
 
+## The data
+
 ```{python}
 penguins_cleaned.head()
 ```
+
+## Bills vs Flippers
 
 The penguins are differentiated by both island and species, but there is clearer clustering by species when looking at the variables: `bill_length_mm` and `flipper_length_mm`.
 

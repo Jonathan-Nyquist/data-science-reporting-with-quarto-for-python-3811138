@@ -20,5 +20,6 @@
   "workbench.colorTheme": "Visual Studio Dark",
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
-  "quarto.path": ""
+  "quarto.path": "",
+  "editor.codeLens": false
 }

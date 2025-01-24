@@ -1,0 +1,23 @@
+---
+title: "Markdown in reports"
+format: html
+---
+
+## Subheadings
+
+These are the standard markdown formats available in almost all Markdown implementations
+
+- *italics*
+
+dd
+
+- **bold**
+
+- Enumerate and numbered lists
+
+1. Hyperlinks [https://learning.linkedin.com/](LinkedIn Learning)
+
+2. Code can look like code `2 + 2`
+
+![]sss
+

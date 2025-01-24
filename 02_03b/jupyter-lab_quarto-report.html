@@ -57,16 +57,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="jlab - inline_files/libs/clipboard/clipboard.min.js"></script>
-<script src="jlab - inline_files/libs/quarto-html/quarto.js"></script>
-<script src="jlab - inline_files/libs/quarto-html/popper.min.js"></script>
-<script src="jlab - inline_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="jlab - inline_files/libs/quarto-html/anchor.min.js"></script>
-<link href="jlab - inline_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="jlab - inline_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="jlab - inline_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="jlab - inline_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="jlab - inline_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="jupyter-lab_quarto-report_files/libs/clipboard/clipboard.min.js"></script>
+<script src="jupyter-lab_quarto-report_files/libs/quarto-html/quarto.js"></script>
+<script src="jupyter-lab_quarto-report_files/libs/quarto-html/popper.min.js"></script>
+<script src="jupyter-lab_quarto-report_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="jupyter-lab_quarto-report_files/libs/quarto-html/anchor.min.js"></script>
+<link href="jupyter-lab_quarto-report_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="jupyter-lab_quarto-report_files/libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="jupyter-lab_quarto-report_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="jupyter-lab_quarto-report_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="jupyter-lab_quarto-report_files/libs/bootstrap/bootstrap-973236bd072d72a04ee9cd82dcc9cb29.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
 
 <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
@@ -99,24 +99,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<div id="244bc05e-9d50-4ecc-9e49-0a9ebd1ee2bc" class="cell" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
+<section id="live-preview" class="level1">
+<h1>Live Preview</h1>
+<p>Random numbers help demonstrate the live preview:</p>
+<div id="0af8f1c4" class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>random_big <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">999</span>) <span class="op">*</span> <span class="fl">1E6</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>random_small <span class="op">=</span> random.randint(<span class="dv">1</span>, <span class="dv">500</span>)</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(random_big <span class="op">+</span> random_small)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>682000136.0</code></pre>
+<pre><code>537000037.0</code></pre>
 </div>
 </div>
+</section>
 <section id="penguins" class="level1">
 <h1>Penguins</h1>
-<div id="05edc4ff-5125-44df-87e5-aeacbd5ad7e9" class="cell" data-execution_count="1">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="4285132f" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_point, aes, stat_smooth, facet_wrap</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -127,15 +126,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>penguins_cleaned <span class="op">=</span> penguins.dropna()</span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>selected_features <span class="op">=</span> [<span class="st">"bill_length_mm"</span>, <span class="st">"flipper_length_mm"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-<p>The palmer penguins dataset contains information about <code>{python} len(penguins)</code> penguins, after discarding rows with NA values there are <code>{python} len(penguins_cleaned)</code> penguins left.</p>
-<div id="ece87778-c8cf-485b-ac5c-703c11d450d4" class="cell" data-execution_count="2">
-<details class="code-fold">
-<summary>Code</summary>
+<p>The palmer penguins dataset contains information about 344 penguins, after discarding rows with NA values there are 333 penguins left.</p>
+<div id="7ae26899" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>penguins_cleaned.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -220,57 +215,48 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Island</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Sex</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Species</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
-<div id="62693138-e97c-46a3-ae0d-f83ad079fd95" class="cell" data-execution_count="3">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="9909cd5c" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins_cleaned, aes(selected_features[<span class="dv">0</span>],</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"flipper_length_mm"</span>, color<span class="op">=</span><span class="st">"factor(island)"</span>))</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>           selected_features[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"factor(island)"</span>))</span>
 <span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="jlab%20-%20inline_files/figure-html/cell-5-output-1.png" width="640" height="480" class="figure-img"></p>
+<p><img src="jupyter-lab_quarto-report_files/figure-html/cell-5-output-1.png" width="640" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
-<div id="6874dbcc-bfa4-4cd9-84d2-f7f199ae282b" class="cell" data-execution_count="4">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="45f69a95" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins_cleaned, aes(selected_features[<span class="dv">0</span>],</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"flipper_length_mm"</span>, color<span class="op">=</span><span class="st">"factor(sex)"</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>           selected_features[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"factor(sex)"</span>))</span>
 <span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
 <span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="jlab%20-%20inline_files/figure-html/cell-6-output-1.png" width="640" height="480" class="figure-img"></p>
+<p><img src="jupyter-lab_quarto-report_files/figure-html/cell-6-output-1.png" width="640" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
 </div>
 </div>
 <div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
-<div id="4e1fd750-f98c-409b-86e6-47ac9c91525c" class="cell" data-scrolled="true" data-execution_count="5">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="789afd5b" class="cell" data-execution_count="6">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins_cleaned, aes(selected_features[<span class="dv">0</span>],</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           <span class="st">"flipper_length_mm"</span>, color<span class="op">=</span><span class="st">"factor(sex)"</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>           selected_features[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"factor(species)"</span>))</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 <div class="cell-output cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="jlab%20-%20inline_files/figure-html/cell-7-output-1.png" width="640" height="480" class="figure-img"></p>
+<p><img src="jupyter-lab_quarto-report_files/figure-html/cell-7-output-1.png" width="640" height="480" class="figure-img"></p>
 </figure>
 </div>
 </div>
@@ -280,9 +266,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <section id="kmeans-clustering" class="level2">
 <h2 class="anchored" data-anchor-id="kmeans-clustering">KMeans clustering</h2>
-<div id="82f4fb28-4a50-448a-af99-fa1e29881576" class="cell" data-execution_count="9">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="fa746292" class="cell" data-execution_count="7">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -292,11 +276,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>features_scaled <span class="op">=</span> scaler.fit_transform(features)</span>
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-<div id="0fd9e549-f2d3-4b3b-aea0-1dba2cf4f516" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
+<div id="a57364a7" class="cell" data-execution_count="8">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>penguin_predictions <span class="op">=</span> kmeans.fit_predict(features_scaled)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>penguins_cleaned.loc[:, <span class="st">"cluster"</span>] <span class="op">=</span> penguin_predictions</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -324,24 +305,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>penguins_crosstabbed_mismatch <span class="op">=</span> penguins_crosstabbed.copy(deep<span class="op">=</span><span class="va">True</span>)</span>
 <span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb9-27"><a href="#cb9-27" aria-hidden="true" tabindex="-1"></a>np.fill_diagonal(penguins_crosstabbed_mismatch.values, <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 </div>
-<p>Out of <code>{python} penguins_crosstabbed.sum().sum().item()</code> penguins, our model misclassified only <code>{python} round(penguins_crosstabbed_mismatch.sum().sum().item() / penguins_crosstabbed.sum().sum().item(), 2) * 100</code>% of the penguins.</p>
-<div id="ee89fdd9-89b5-4fff-91dc-8a0a71a23e7f" class="cell">
-<details class="code-fold">
-<summary>Code</summary>
+<p>Out of 333 penguins, our model misclassified only 5.0% of the penguins.</p>
+<div id="c75ff72c" class="cell" data-execution_count="9">
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>penguins_clust_long <span class="op">=</span> pd.melt(penguins_selected,</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                              id_vars<span class="op">=</span>[<span class="st">"bill_length_mm"</span>, <span class="st">"flipper_length_mm"</span>],</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>                              id_vars<span class="op">=</span>selected_features,</span>
 <span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>                              var_name<span class="op">=</span><span class="st">"measure"</span>,</span>
 <span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>                              value_name<span class="op">=</span><span class="st">"group"</span>)</span>
 <span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>(</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins_clust_long, aes(<span class="st">"bill_length_mm"</span>,</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>           <span class="st">"flipper_length_mm"</span>, color<span class="op">=</span><span class="st">"factor(group)"</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    ggplot(penguins_clust_long, aes(selected_features[<span class="dv">0</span>],</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>           selected_features[<span class="dv">1</span>], color<span class="op">=</span><span class="st">"factor(group)"</span>))</span>
 <span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> geom_point()</span>
 <span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">+</span> facet_wrap(<span class="st">"measure"</span>)</span>
 <span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>/opt/miniconda3/lib/python3.12/site-packages/plotnine/utils.py:596: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.
+/opt/miniconda3/lib/python3.12/site-packages/plotnine/geoms/geom.py:289: FutureWarning: The default of observed=False is deprecated and will be changed to True in a future version of pandas. Pass observed=False to retain current behavior or observed=True to adopt the future default and silence this warning.</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="jupyter-lab_quarto-report_files/figure-html/cell-10-output-2.png" width="640" height="480" class="figure-img"></p>
+</figure>
+</div>
+</div>
 </div>
 </section>
 </section>

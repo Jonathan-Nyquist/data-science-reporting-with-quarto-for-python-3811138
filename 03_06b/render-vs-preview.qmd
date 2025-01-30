@@ -1,0 +1,35 @@
+---
+title: "Rendering vs Previewing"
+format: html
+---
+
+Let's generate a few random numbers:
+
+```{python}
+import random
+rand_1 = random.randint(1, 500)
+```
+
+```{python}
+rand_2 = random.randint(400, 999)
+```
+
+```{python}
+rand_3 = random.randint(1, 999)
+```
+
+Here's the vector:
+
+```{python}
+data = [rand_1, rand_2, rand_3]
+data
+```
+
+And a piechart:
+
+```{python}
+import matplotlib.pyplot as plt
+
+plt.pie(data, labels=["A", "B", "C"])
+plt.show()
+```

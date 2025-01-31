@@ -7,6 +7,7 @@ echo: true
 ## About penguins
 
 ```{python}
+# | echo: false
 from palmerpenguins import load_penguins
 import pandas as pd
 import numpy as np

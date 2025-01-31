@@ -1,0 +1,59 @@
+---
+title: "Matplotlib and plotnine"
+format: pdf
+---
+
+# Penguins data
+
+```{python}
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+
+penguins = load_penguins()
+penguins_cleaned = penguins.dropna()
+
+species_counts = penguins_cleaned['species'].value_counts()
+```
+
+# Matplotlib
+
+```{python}
+import matplotlib.pyplot as plt
+
+plot = plt.figure()
+plot.set_figwidth(6)
+plot.set_figheight(3)
+
+plt.bar(species_counts.index, species_counts.values)
+```
+
+For most flexibility, save chart as an image and then use Quarto formatting of images:
+
+```{python}
+plot.savefig("matplotlib_bar.png")
+```
+
+![](matplotlib_bar.png){width="30%"}
+
+# Plotnine
+
+```{python}
+import plotnine as pn
+
+pn_species_col = (
+    pn.ggplot(species_counts.reset_index(), pn.aes("species",
+                                                   "count"))
+    + pn.geom_col()
+    + pn.theme(figure_size=(3, 6))
+)
+pn_species_col
+```
+
+Again, export as image for most flexibility
+
+```{python}
+pn_species_col.save("plotnine_bar.png", dpi=300)
+```
+
+<img src="plotnine_bar.png" width="600px"/>

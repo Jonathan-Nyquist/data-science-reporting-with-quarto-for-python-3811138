@@ -1,0 +1,39 @@
+---
+title: "Quarto Tables in PDF"
+format: pdf
+---
+
+# Markdown tables
+
+| Common Name | Latin Name | First identified in |
+|---------|:-----|:------:|
+| Adélie | Pygoscelis adeliae | 1841 |
+| Chinstrap | Pygoscelis antarcticus  | 1781 |
+| Gentoo | Pygoscelis papua | 1781 |
+
+# Better tables
+
+```{python}
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+
+penguins = load_penguins()
+penguins_cleaned = penguins.dropna()
+penguins_cleaned
+```
+
+panda's `to_latex()` is currently the best solution for custom formatting PDF tables from Python objects
+
+```{python}
+# | eval: true
+# | output: asis
+# | warning: false
+penguins_small = penguins.head(15).iloc[:, :4]
+penguins_small.columns = penguins_small.columns.str.replace('_', '.')
+
+
+print(penguins_small.style.applymap_index(
+    lambda v: "font-weight: bold;", axis="columns").to_latex(convert_css=True))
+```
+

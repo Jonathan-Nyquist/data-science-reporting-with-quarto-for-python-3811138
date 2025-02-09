@@ -1,0 +1,46 @@
+---
+title: "Quarto Tables in PDF"
+format:
+  docx:
+    reference-doc: custom-reference-doc_with-tables.docx
+---
+
+# Markdown tables
+
+| Common Name | Latin Name | First identified in |
+|---------|:-----|:------:|
+| Adélie | Pygoscelis adeliae | 1841 |
+| Chinstrap | Pygoscelis antarcticus  | 1781 |
+| Gentoo | Pygoscelis papua | 1781 |
+
+# Better tables
+
+```{python}
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+
+penguins = load_penguins()
+penguins_cleaned = penguins.dropna()
+penguins_cleaned
+```
+
+The [`tabulate` package](https://pypi.org/project/tabulate/) is currently the best solution for custom formatting Word tables from Python objects.
+
+```{python}
+# | eval: true
+# | output: asis
+# | warning: false
+from IPython.display import Markdown
+from tabulate import tabulate
+
+penguins_small = penguins.head(15).iloc[:, :4]
+penguins_small.columns = penguins_small.columns.str.replace('_', '.')
+
+
+Markdown(tabulate(
+    penguins_small,
+    headers=penguins_small.columns,
+    showindex="never"
+))
+```

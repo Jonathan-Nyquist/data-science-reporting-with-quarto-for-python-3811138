@@ -6,3 +6,5 @@ sklearn
 palmerpenguins
 jupyter-cache
 lorem_text
+itables
+tabulate

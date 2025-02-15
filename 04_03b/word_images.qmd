@@ -1,0 +1,22 @@
+---
+title: "Quarto Tables in Word"
+format: docx
+---
+
+# Simple image insertion
+
+Using Markdown
+
+![](palmer-penguins_by-allison-horst.png){width="4in"}
+
+# Fancier image insertion
+
+There isn't good multi-column support currently.
+
+However you can do things like insert images into tables.
+
+| Common Name | Latin Name | First identified in |
+|---------|:-----|:------:|
+| Adélie | Pygoscelis adeliae | 1841 |
+| Chinstrap | ![](palmer-penguins_by-allison-horst.png){width="1in"}  | 1781 |
+| Gentoo | Pygoscelis papua | 1781 |

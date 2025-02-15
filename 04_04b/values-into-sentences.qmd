@@ -1,0 +1,20 @@
+---
+title: "Values into sentences"
+format: html
+---
+
+```{python}
+import pandas as pd
+from palmerpenguins import load_penguins
+
+penguins = load_penguins()
+penguins_cleaned = penguins.dropna()
+```
+
+There are XXX values in the penguins dataset, XX% of the rows have NA values.
+
+```{python}
+species_counts = penguins_cleaned['species'].value_counts()
+```
+
+The most common species is XXX.

@@ -1,0 +1,68 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Values into sentences\"\n",
+        "format: html\n",
+        "---"
+      ],
+      "id": "3df5b66f"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import pandas as pd\n",
+        "from palmerpenguins import load_penguins\n",
+        "\n",
+        "penguins = load_penguins()\n",
+        "penguins_cleaned = penguins.dropna()"
+      ],
+      "id": "4964e3bc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "There are `{python} len(penguins)` values in the penguins dataset, `{python} round(100 * (1 - len(penguins_cleaned) / len(penguins)), 2)`% of the rows have NA values.\n"
+      ],
+      "id": "95d0d062"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: bad-chunk\n",
+        "2 / 0\n",
+        "species_counts = penguins_cleaned['species'].value_counts()\n",
+        "species_most_commom = species_counts.index[0]"
+      ],
+      "id": "bad-chunk",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "The most common species is `{python} species_most_commom`."
+      ],
+      "id": "3c879b5a"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/home/vscode/.local/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

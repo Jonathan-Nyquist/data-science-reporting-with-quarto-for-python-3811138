@@ -1,0 +1,26 @@
+---
+title: "Quarto Tables in HTML"
+format: html
+---
+
+# Simple image insertion
+
+Using Markdown
+
+![](palmer-penguins_by-allison-horst.png){width="50px"}
+
+Using explicit HTML
+
+<img src="palmer-penguins_by-allison-horst.png" width="30%"/>
+
+# Fancier image insertion
+
+::: {.container}
+
+<img style="float: left; margin-right: 10px;" src="palmer-penguins_by-allison-horst.png" width="30%">
+
+Combinding CSS and HTML together you have full control over image placement in your Quarto reports, slides and websites.
+
+<p>Note that it can be confusing when you combine HTML and Markdown together. The previous sentence uses an implicit `<p>` tag from Markdown whereas this one is in an explicit tag</p>
+
+:::

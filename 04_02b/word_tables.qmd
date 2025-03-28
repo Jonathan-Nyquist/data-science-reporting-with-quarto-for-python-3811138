@@ -2,7 +2,7 @@
 title: "Quarto Tables in PDF"
 format:
   docx:
-    reference-doc: custom-reference-doc_with-tables.docx
+    reference-doc: custom-reference-doc.docx
 ---
 
 # Markdown tables

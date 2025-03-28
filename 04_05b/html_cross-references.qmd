@@ -1,6 +1,6 @@
 ---
 title: "Cross References"
-format: pdf
+format: html
 number-sections: true
 crossref:
   chapters: true
@@ -15,13 +15,13 @@ To cross reference to an image you should prefix your tags with fig, eg  [@fig-p
 
 ![](palmer-penguins_by-allison-horst.png){#fig-penguins width=50%}
 
-To do this with an image tag you need a fenced div: 
+To do this with an image tag you need a fenced div: [@]
 
-::: {#fig-lil-elephant}
-<img src="lil-logo.jpg" width="50%" class="fig-lil-logo"/>
+::: {#fig-lil-logo}
+<img src="lil-logo.jpg" width="50%"/>
 :::
 
-## Sections 
+# Sections 
 
 To cross-reference sections use the `sec` prefix, eg [@sec-code-output]
 

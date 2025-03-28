@@ -2,7 +2,7 @@
 title: "Quarto Tables in PowerPoint"
 format:
   pptx:
-    reference-doc: basic-powerpoint-reference.pptx
+    reference-doc: powerpoint-reference.pptx
 ---
 
 ## Simple image insertion
@@ -42,5 +42,23 @@ Then this is not a heading?
 
 ::: {.column}
 Just normal text?
+:::
+:::
+
+## Images in both?
+
+::: columns
+::: {.column}
+- @fig-myfig shows something amazing. 
+
+![](palmer-penguins_by-allison-horst.png){#fig-myfig}
+:::
+
+::: {.column}
+- @fig-myfig shows something amazing. 
+
+![](palmer-penguins_by-allison-horst.png){#fig-myfig}
+
+Stuff below?!
 :::
 :::

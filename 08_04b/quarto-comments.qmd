@@ -11,11 +11,12 @@ format: html
 
 - list
 
+-->
+
 ```{python}
 # this is a python comment
 some_variable = 1 / 1
 ```
 
--->
 
 The value of the variable is `{python} some_variable`

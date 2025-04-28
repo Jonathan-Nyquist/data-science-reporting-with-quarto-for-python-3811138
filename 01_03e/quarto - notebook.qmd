@@ -24,28 +24,26 @@ print(random_big + random_small)
 Let's take a gander at the penguins dataset:
 
 ```{python}
-from palmerpenguins import load_penguins
 import pandas as pd
 import numpy as np
-pd.options.mode.chained_assignment = None
+from palmerpenguins import load_penguins
 
+penguins_df = load_penguins()
 
-penguins = load_penguins()
-penguins.head()
 ```
 
 Let's clean and visualise our variables of interest:
 
 ```{python}
-from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+import plotnine as pn
 
 # Drop rows with missing values
-penguins_cleaned = penguins.dropna()
+penguins_cleaned_df = penguins_df.dropna()
 
 (
-    ggplot(penguins_cleaned, aes("bill_length_mm",
-           "flipper_length_mm", color="factor(species)"))
-    + geom_point()
+    pn.ggplot(penguins_cleaned_df, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(species)"))
+    + pn.geom_point()
 )
 ```
 
@@ -59,36 +57,41 @@ from sklearn.preprocessing import StandardScaler
 
 selected_features = ["bill_length_mm", "flipper_length_mm"]
 
-features = penguins_cleaned.loc[:, selected_features]
+model_params = {"n_clusters": 3,
+                "max_iter": 300}
 
-scaler = StandardScaler()
-features_scaled = scaler.fit_transform(features)
+penguins_data_df = penguins_cleaned_df.copy()
 
-# K-Means Clustering
-kmeans = KMeans(n_clusters=3)
-# poor model kmeans = KMeans(n_clusters=3, algorithm="elkan", n_init=1, max_iter=1)
+features_df = penguins_data_df.loc[:, selected_features]
 
-penguin_predictions = kmeans.fit_predict(features_scaled)
-penguins_cleaned.loc[:, "cluster"] = penguin_predictions
+# kmeans needs scaled features
+standard_scalar = StandardScaler()
+features_standard_scalar = standard_scalar.fit_transform(features_df)
+
+kmeans_model = KMeans(
+    n_clusters=model_params["n_clusters"], max_iter=model_params["max_iter"])
+
+penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)
+penguins_data_df.loc[:, "cluster"] = penguin_predictions
 ```
 
 Let's match up the clusters to the species by the cluster containing most predictions
 
 ```{python}
-cluster_species = penguins_cleaned.groupby(
+cluster_species = penguins_data_df.groupby(
     "species")["cluster"].agg(lambda x: x.value_counts().index[0])
 
 cluster_species_df = cluster_species.reset_index()
 
-penguins_cleaned['cluster'] = penguins_cleaned['cluster'].astype(str)
+penguins_data_df['cluster'] = penguins_data_df['cluster'].astype(str)
 cluster_species_df['cluster'] = cluster_species_df['cluster'].astype(str)
 
-penguins_cleaned.loc[:, "cluster"] = penguins_cleaned["cluster"].map(
+penguins_data_df.loc[:, "cluster"] = penguins_data_df["cluster"].map(
     cluster_species_df.set_index("cluster")["species"])
 
 cols_compare = ["species",
                 "cluster", "bill_length_mm", "flipper_length_mm"]
-penguins_selected = penguins_cleaned[cols_compare]
+penguins_selected = penguins_data_df[cols_compare]
 
 penguins_selected = penguins_selected.rename(columns={
     "species": "actual_species", "cluster": "predicted_species"})
@@ -104,8 +107,6 @@ np.fill_diagonal(penguins_crosstabbed_mismatch.values, 0)
 Let's now visualise how well the clustering worked:
 
 ```{python}
-import plotnine as pn
-
 cols_compare = ["species",
                 "cluster", "bill_length_mm", "flipper_length_mm"]
 penguins_selected = penguins_data_df[cols_compare]

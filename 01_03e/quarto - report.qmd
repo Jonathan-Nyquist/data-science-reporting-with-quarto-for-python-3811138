@@ -19,7 +19,7 @@ selected_features = ["bill_length_mm", "flipper_length_mm"]
 The palmer penguins dataset contains information about `{python} len(penguins_df)` penguins, after discarding rows with NA values there are `{python} len(penguins_cleaned_df)` penguins left.
 
 ```{python}
-penguins_cleaned.head()
+penguins_cleaned_df.head()
 ```
 
 The penguins are differentiated by both island and species, but there is clearer clustering by species when looking at the variables: `bill_length_mm` and `flipper_length_mm`.
@@ -31,8 +31,8 @@ The penguins are differentiated by both island and species, but there is clearer
 ```{python}
 import plotnine as pn
 (
-    pn.ggplot(penguins_cleaned, pn.aes(selected_features[0],
-           "flipper_length_mm", color="factor(island)"))
+    pn.ggplot(penguins_cleaned_df, pn.aes(selected_features[0],
+                                          "flipper_length_mm", color="factor(island)"))
     + pn.geom_point()
 )
 ```
@@ -41,8 +41,8 @@ import plotnine as pn
 
 ```{python}
 (
-    pn.ggplot(penguins_cleaned, pn.aes(selected_features[0],
-           "flipper_length_mm", color="factor(sex)"))
+    pn.ggplot(penguins_cleaned_df, pn.aes(selected_features[0],
+                                          "flipper_length_mm", color="factor(sex)"))
     + pn.geom_point()
 )
 ```
@@ -51,8 +51,8 @@ import plotnine as pn
 
 ```{python}
 (
-    pn.ggplot(penguins_cleaned, pn.aes("bill_length_mm",
-           "flipper_length_mm", color="factor(species)"))
+    pn.ggplot(penguins_cleaned_df, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(species)"))
     + pn.geom_point()
 )
 ```
@@ -83,23 +83,22 @@ kmeans_model = KMeans(
 
 penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)
 penguins_data_df.loc[:, "cluster"] = penguin_predictions
-```
 
-```{python}
-cluster_species = penguins_cleaned.groupby(
+# ---- Add cluster info to data
+cluster_species = penguins_data_df.groupby(
     "species")["cluster"].agg(lambda x: x.value_counts().index[0])
 
 cluster_species_df = cluster_species.reset_index()
 
-penguins_cleaned['cluster'] = penguins_cleaned['cluster'].astype(str)
+penguins_data_df['cluster'] = penguins_data_df['cluster'].astype(str)
 cluster_species_df['cluster'] = cluster_species_df['cluster'].astype(str)
 
-penguins_cleaned.loc[:, "cluster"] = penguins_cleaned["cluster"].map(
+penguins_data_df.loc[:, "cluster"] = penguins_data_df["cluster"].map(
     cluster_species_df.set_index("cluster")["species"])
 
 cols_compare = ["species",
                 "cluster", "bill_length_mm", "flipper_length_mm"]
-penguins_selected = penguins_cleaned[cols_compare]
+penguins_selected = penguins_data_df[cols_compare]
 
 penguins_selected = penguins_selected.rename(columns={
     "species": "actual_species", "cluster": "predicted_species"})

@@ -1,9 +1,9 @@
 ---
 format: html
 editor:
-  render-on-save: true
+  render-on-save: false
 execute:
-  cache: true
+  cache: false
 ---
 
 # Live Previewing

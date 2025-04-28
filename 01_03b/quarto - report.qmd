@@ -1,0 +1,138 @@
+---
+format: html
+code-fold: true
+---
+
+# Palmer Penguins
+
+```{python}
+import pandas as pd
+import numpy as np
+from palmerpenguins import load_penguins
+# pd.options.mode.chained_assignment = None
+
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
+selected_features = ["bill_length_mm", "flipper_length_mm"]
+```
+
+The palmer penguins dataset contains information about `{python} len(penguins_df)` penguins, after discarding rows with NA values there are `{python} len(penguins_cleaned_df)` penguins left.
+
+```{python}
+penguins_cleaned_df.head()
+```
+
+The penguins are differentiated by both island and species, but there is clearer clustering by species when looking at the variables: `bill_length_mm` and `flipper_length_mm`.
+
+::: {.panel-tabset}
+
+### Island
+
+```{python}
+import plotnine as pn
+(
+    pn.ggplot(penguins_cleaned_df, pn.aes(selected_features[0],
+                                          "flipper_length_mm", color="factor(island)"))
+    + pn.geom_point()
+)
+```
+
+### Sex
+
+```{python}
+(
+    pn.ggplot(penguins_cleaned_df, pn.aes(selected_features[0],
+                                          "flipper_length_mm", color="factor(sex)"))
+    + pn.geom_point()
+)
+```
+
+### Species
+
+```{python}
+(
+    pn.ggplot(penguins_cleaned_df, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(species)"))
+    + pn.geom_point()
+)
+```
+
+:::
+
+## KMeans clustering
+
+```{python}
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+selected_features = ["bill_length_mm", "flipper_length_mm"]
+
+model_params = {"n_clusters": 3,
+                "max_iter": 300}
+
+penguins_data_df = penguins_cleaned_df.copy()
+
+features_df = penguins_data_df.loc[:, selected_features]
+
+# kmeans needs scaled features
+standard_scalar = StandardScaler()
+features_standard_scalar = standard_scalar.fit_transform(features_df)
+
+kmeans_model = KMeans(
+    n_clusters=model_params["n_clusters"], max_iter=model_params["max_iter"])
+
+penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)
+penguins_data_df.loc[:, "cluster"] = penguin_predictions
+
+# ---- Add cluster info to data
+cluster_species = penguins_data_df.groupby(
+    "species")["cluster"].agg(lambda x: x.value_counts().index[0])
+
+cluster_species_df = cluster_species.reset_index()
+
+penguins_data_df['cluster'] = penguins_data_df['cluster'].astype(str)
+cluster_species_df['cluster'] = cluster_species_df['cluster'].astype(str)
+
+penguins_data_df.loc[:, "cluster"] = penguins_data_df["cluster"].map(
+    cluster_species_df.set_index("cluster")["species"])
+
+cols_compare = ["species",
+                "cluster", "bill_length_mm", "flipper_length_mm"]
+penguins_selected = penguins_data_df[cols_compare]
+
+penguins_selected = penguins_selected.rename(columns={
+    "species": "actual_species", "cluster": "predicted_species"})
+
+penguins_crosstabbed = pd.crosstab(penguins_selected['predicted_species'],
+                                   penguins_selected['actual_species'])
+
+penguins_crosstabbed_mismatch = penguins_crosstabbed.copy(deep=True)
+
+np.fill_diagonal(penguins_crosstabbed_mismatch.values, 0)
+```
+
+Out of `{python} penguins_crosstabbed.sum().sum().item()` penguins, our model misclassified only `{python} round(penguins_crosstabbed_mismatch.sum().sum().item() / penguins_crosstabbed.sum().sum().item(), 2) * 100`% of the penguins.
+
+```{python}
+import plotnine as pn
+
+cols_compare = ["species",
+                "cluster", "bill_length_mm", "flipper_length_mm"]
+penguins_selected = penguins_data_df[cols_compare]
+
+penguins_selected = penguins_selected.rename(columns={
+    "species": "actual_species", "cluster": "predicted_species"})
+
+penguins_clust_long = pd.melt(penguins_selected,
+                              id_vars=["bill_length_mm", "flipper_length_mm"],
+                              var_name="measure",
+                              value_name="group")
+
+(
+    pn.ggplot(penguins_clust_long, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(group)"))
+    + pn.geom_point()
+    + pn.facet_wrap("measure")
+)
+```
+

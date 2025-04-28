@@ -1,0 +1,129 @@
+---
+format: html
+editor:
+  render-on-save: true
+execute:
+  cache: true
+---
+
+# Live Previewing
+
+I want to prove this is live previewing. 
+
+```{python}
+import random
+random_big = random.randint(1, 999) * 1E6
+
+random_small = random.randint(1, 500)
+print(random_big + random_small)
+```
+
+
+# Palmer Penguins
+
+Let's take a gander at the penguins dataset:
+
+```{python}
+import pandas as pd
+import numpy as np
+from palmerpenguins import load_penguins
+
+penguins_df = load_penguins()
+
+```
+
+Let's clean and visualise our variables of interest:
+
+```{python}
+import plotnine as pn
+
+# Drop rows with missing values
+penguins_cleaned_df = penguins_df.dropna()
+
+(
+    pn.ggplot(penguins_cleaned_df, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(species)"))
+    + pn.geom_point()
+)
+```
+
+## KMeans clustering
+
+Let's see if these two variables are sufficient to identify penguin species with KMeans.
+
+```{python}
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+
+selected_features = ["bill_length_mm", "flipper_length_mm"]
+
+model_params = {"n_clusters": 3,
+                "max_iter": 300}
+
+penguins_data_df = penguins_cleaned_df.copy()
+
+features_df = penguins_data_df.loc[:, selected_features]
+
+# kmeans needs scaled features
+standard_scalar = StandardScaler()
+features_standard_scalar = standard_scalar.fit_transform(features_df)
+
+kmeans_model = KMeans(
+    n_clusters=model_params["n_clusters"], max_iter=model_params["max_iter"])
+
+penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)
+penguins_data_df.loc[:, "cluster"] = penguin_predictions
+```
+
+Let's match up the clusters to the species by the cluster containing most predictions
+
+```{python}
+cluster_species = penguins_data_df.groupby(
+    "species")["cluster"].agg(lambda x: x.value_counts().index[0])
+
+cluster_species_df = cluster_species.reset_index()
+
+penguins_data_df['cluster'] = penguins_data_df['cluster'].astype(str)
+cluster_species_df['cluster'] = cluster_species_df['cluster'].astype(str)
+
+penguins_data_df.loc[:, "cluster"] = penguins_data_df["cluster"].map(
+    cluster_species_df.set_index("cluster")["species"])
+
+cols_compare = ["species",
+                "cluster", "bill_length_mm", "flipper_length_mm"]
+penguins_selected = penguins_data_df[cols_compare]
+
+penguins_selected = penguins_selected.rename(columns={
+    "species": "actual_species", "cluster": "predicted_species"})
+
+penguins_crosstabbed = pd.crosstab(penguins_selected['predicted_species'],
+                                   penguins_selected['actual_species'])
+
+penguins_crosstabbed_mismatch = penguins_crosstabbed.copy(deep=True)
+
+np.fill_diagonal(penguins_crosstabbed_mismatch.values, 0)
+```
+
+Let's now visualise how well the clustering worked:
+
+```{python}
+cols_compare = ["species",
+                "cluster", "bill_length_mm", "flipper_length_mm"]
+penguins_selected = penguins_data_df[cols_compare]
+
+penguins_selected = penguins_selected.rename(columns={
+    "species": "actual_species", "cluster": "predicted_species"})
+
+penguins_clust_long = pd.melt(penguins_selected,
+                              id_vars=["bill_length_mm", "flipper_length_mm"],
+                              var_name="measure",
+                              value_name="group")
+
+(
+    pn.ggplot(penguins_clust_long, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(group)"))
+    + pn.geom_point()
+    + pn.facet_wrap("measure")
+)
+```
+

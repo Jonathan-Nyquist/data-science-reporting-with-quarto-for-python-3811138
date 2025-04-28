@@ -1,20 +1,20 @@
 ---
 format: html
 editor:
-  render-on-save: false
+  render-on-save: true
 execute:
-  cache: false
+  cache: true
 ---
 
 # Live Previewing
 
-I want to prove this is live previewing. 
+I want to prove this is live previewing. Hello world and everyone!
 
 ```{python}
 import random
 random_big = random.randint(1, 999) * 1E6
 
-random_small = random.randint(1, 500)
+random_small = random.randint(1, 400)
 print(random_big + random_small)
 ```
 

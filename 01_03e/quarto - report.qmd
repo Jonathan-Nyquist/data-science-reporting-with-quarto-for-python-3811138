@@ -83,7 +83,9 @@ kmeans_model = KMeans(
 
 penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)
 penguins_data_df.loc[:, "cluster"] = penguin_predictions
+```
 
+```{python}
 # ---- Add cluster info to data
 cluster_species = penguins_data_df.groupby(
     "species")["cluster"].agg(lambda x: x.value_counts().index[0])

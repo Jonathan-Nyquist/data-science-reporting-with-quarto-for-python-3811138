@@ -1,0 +1,49 @@
+---
+title: "revealjs is awesome"
+format: revealjs
+---
+
+The `revealjs` format has [several unique layout options](https://quarto.org/docs/presentations/revealjs/#output-location). 
+
+```{python}
+# | output-location: column
+# | echo: true
+from palmerpenguins import load_penguins
+import plotnine as pn
+penguins_df = load_penguins()
+(
+    pn.ggplot(penguins_df,
+              pn.aes(
+                  x="bill_length_mm",
+                  y="flipper_length_mm",
+                  color="factor(species)"))
+    + pn.geom_point()
+    + pn.theme_gray(base_size=16)
+)
+```
+
+# Level one headings create section slides {background-color='lightblue'}
+
+##
+
+New slides are delimited with level 2 headings.
+
+[Fragments provide full control over when and how content is displayed](https://quarto.org/docs/presentations/revealjs/advanced.html#fragments).
+
+<hr>
+
+::: {.fragment}
+
+```{python}
+penguins_df.head(3)
+```
+
+:::
+
+::: {.fragment}
+There are more [advanced revealjs options!](https://quarto.org/docs/presentations/revealjs/advanced.html)
+:::
+
+::: {.fragment}
+This text appears second
+:::

@@ -1,0 +1,64 @@
+---
+title: "Quarto dashboards"
+format: dashboard
+---
+
+# Page 1
+
+## Row {height=40%}
+
+::: {.valuebox icon="info-circle-fill" color="#EFF1F3"}
+Value boxes are really awesome! They're designed to work with specially formed `dicts` and can use any of [Bootstrap's 2000+ icons](https://icons.getbootstrap.com/)
+:::
+
+```{python}
+# | content: valuebox
+# | title: "Traffic"
+import random
+traffic_bool = bool(random.getrandbits(1))
+dict(
+    value=50 if traffic_bool else -50,
+    icon="arrow-up" if traffic_bool else "arrow-down",
+    color="success" if traffic_bool else "danger"
+)
+```
+
+```{python}
+# | content: valuebox
+# | title: "Unique Visitors"
+import random
+visitors_bool = not traffic_bool
+dict(
+    value=50 if visitors_bool else -50,
+    icon="arrow-up" if visitors_bool else "arrow-down",
+    color="success" if visitors_bool else "danger"
+)
+```
+
+## Row {.tabset}
+
+```{python}
+# | title: "Penguins table"
+# | label: tbl-penguins
+# | tbl-cap: "The first 10 rows of the Penguins dataset"
+from palmerpenguins import load_penguins
+penguins_df = load_penguins()
+penguins_df.head(10)
+```
+
+```{python}
+# | title: "Penguins chart"
+# | warning: false
+import plotly.express as px
+px.scatter(
+    penguins_df, x="bill_length_mm", y="bill_depth_mm",
+    color="species",
+    facet_col="island"
+)
+```
+
+# Page Two
+
+::: {.card title="Layout information"}
+Refer to [Quarto's Dashboard Layout page](https://quarto.org/docs/dashboards/layout.html) for more information about how to customise this format.
+:::

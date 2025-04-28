@@ -1,0 +1,158 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Name your code chunks\"\n",
+        "format: html\n",
+        "---\n",
+        "\n",
+        "\n",
+        "# Data processing\n"
+      ],
+      "id": "d64950ad"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: get-penguins-data\n",
+        "from sklearn.preprocessing import StandardScaler\n",
+        "from sklearn.cluster import KMeans\n",
+        "from palmerpenguins import load_penguins\n",
+        "import pandas as pd\n",
+        "import numpy as np\n",
+        "pd.options.mode.chained_assignment = None\n",
+        "\n",
+        "penguins_df = load_penguins()\n",
+        "penguins_cleaned_df = penguins_df.dropna()"
+      ],
+      "id": "get-penguins-data",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: set-model-parameters\n",
+        "selected_features = [\"bill_length_mm\", \"flipper_length_mm\"]\n",
+        "\n",
+        "model_params = {\"n_clusters\": 3,\n",
+        "                \"max_iter\": 300}\n",
+        "\n",
+        "penguins_data_df = penguins_cleaned_df.copy()\n",
+        "\n",
+        "features_df = penguins_data_df.loc[:, selected_features]"
+      ],
+      "id": "set-model-parameters",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Clustering\n"
+      ],
+      "id": "5da4b7ff"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: scale-features\n",
+        "standard_scalar = StandardScaler()\n",
+        "features_standard_scalar = standard_scalar.fit_transform(features_df)"
+      ],
+      "id": "scale-features",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: kmean-clustering\n",
+        "kmeans_model = KMeans(\n",
+        "    n_clusters=model_params[\"n_clusters\"], max_iter=model_params[\"max_iter\"])\n",
+        "\n",
+        "penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)\n",
+        "penguins_data_df.loc[:, \"cluster\"] = penguin_predictions"
+      ],
+      "id": "kmean-clustering",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Post processing data\n"
+      ],
+      "id": "7ce29f63"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: label-cluster-by-largest-cound\n",
+        "cluster_species_df = penguins_data_df.groupby(\n",
+        "    \"species\")[\"cluster\"].agg(lambda x: x.value_counts().index[1]).reset_index()\n",
+        "\n",
+        "# Insert cluster ids into data and then replace with the\n",
+        "# species label for pretty displaying\n",
+        "penguins_data_df['cluster'] = penguins_data_df['cluster'].astype(str)\n",
+        "cluster_species_df['cluster'] = cluster_species_df['cluster'].astype(str)"
+      ],
+      "id": "label-cluster-by-largest-cound",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: augment-data-with-clusters\n",
+        "penguins_data_df.loc[:, \"cluster\"] = penguins_data_df[\"cluster\"].map(\n",
+        "    cluster_species_df.set_index(\"cluster\")[\"species\"])\n",
+        "\n",
+        "penguins_selected_df = penguins_data_df[cols_compare]\n",
+        "\n",
+        "penguins_selected_df = penguins_selected_df.rename(columns={\n",
+        "    \"species\": \"actual_species\", \"cluster\": \"predicted_species\"})"
+      ],
+      "id": "augment-data-with-clusters",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| label: confusion_matrix\n",
+        "penguins_confusion = pd.crosstab(penguins_selected_df['predicted_species'],\n",
+        "                                 penguins_selected_df['actual_species'])\n",
+        "\n",
+        "penguins_confusion_mismatch = penguins_confusion.copy()\n",
+        "\n",
+        "np.fill_diagonal(penguins_confusion_mismatch.values, 0)"
+      ],
+      "id": "confusion_matrix",
+      "execution_count": null,
+      "outputs": []
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/home/vscode/.local/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

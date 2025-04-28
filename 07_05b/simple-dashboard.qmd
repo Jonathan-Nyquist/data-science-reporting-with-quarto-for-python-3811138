@@ -1,0 +1,4 @@
+---
+title: "Quarto dashboards"
+format: dashboard
+---

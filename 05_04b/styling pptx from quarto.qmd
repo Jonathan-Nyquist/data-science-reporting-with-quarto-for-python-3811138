@@ -1,0 +1,62 @@
+---
+title: "Styling Quarto from PowerPoint"
+format:
+  pptx:
+    reference-doc: powerpoint-reference.pptx
+---
+
+## Content with Caption
+
+Did you the new slide templates come from the Slide Master in PowerPoint?
+
+PowerPoint reference docs in Quarto use a **small** number of specially named slide templates to work.
+
+```{python}
+import plotnine as pn
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
+
+(
+    pn.ggplot(penguins_cleaned_df, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(species)"))
+    + pn.geom_point()
+    + pn.theme_gray(base_size=16)
+)
+```
+
+## Comparison Layout
+
+::: columns
+::: {.column}
+This layout is invoked when if either column contains an image (or table).
+:::
+
+::: {.column}
+- But. There needs to be text *before* the image/table (like this) for it to work well.
+
+```{python}
+import plotnine as pn
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
+
+(
+    pn.ggplot(penguins_cleaned_df, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(island)"))
+    + pn.geom_point()
+    + pn.theme_gray(base_size=16)
+)
+```
+:::
+:::
+
+## Just text
+
+If there's just text on a slide it'll be formatted with the "title and content" layout.

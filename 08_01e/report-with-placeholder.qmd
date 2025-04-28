@@ -1,0 +1,13 @@
+---
+title: My Presentation
+format: dashboard
+filters: 
+  - placeholder
+---
+
+# Filters
+
+## Row {height=40%}
+
+{{< holder 300x100 outline="yes" >}}
+

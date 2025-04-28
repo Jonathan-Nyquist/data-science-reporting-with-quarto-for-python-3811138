@@ -1,0 +1,46 @@
+---
+title: "Penguin Clustering"
+subtitle: "Species Identification"
+format: 
+    docx:
+        reference-doc: "word-reference.docx"
+echo: false
+---
+
+```{python}
+# | include: false
+%run penguins-clustering.py
+```
+
+
+Out of `{python} penguins_confusion.sum().sum().item()` penguins, our model misclassified `{python} round(penguins_confusion_mismatch.sum().sum().item() / penguins_confusion.sum().sum().item(), 2) * 100`% of the penguins.
+
+The model has these parameters:
+
+- Number of Clusters: `{python} model_params["n_clusters"]`
+
+- Max Iterations: `{python} model_params["max_iter"]`
+
+```{python}
+# | output: false
+import plotnine as pn
+
+
+penguins_clust_long_df = pd.melt(penguins_data_df.loc[:, selected_features + ["cluster", "species"]],
+                                 id_vars=["bill_length_mm",
+                                          "flipper_length_mm"],
+                                 var_name="measure",
+                                 value_name="group")
+
+
+pn_scatter_clustering = (
+    pn.ggplot(penguins_clust_long_df, pn.aes("bill_length_mm",
+                                             "flipper_length_mm", color="factor(group)"))
+    + pn.geom_point()
+    + pn.facet_wrap("measure")
+)
+pn_scatter_clustering.save('scatter-clustering.png',
+                           width=6, height=4, dpi=300)
+```
+
+![](scatter-clustering.png){width="6in" height="4in"}

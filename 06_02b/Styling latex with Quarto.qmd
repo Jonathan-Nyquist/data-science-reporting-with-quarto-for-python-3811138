@@ -1,0 +1,67 @@
+---
+title: "LaTeX requires a little effort"
+format:
+  pdf:
+    include-in-header: 
+      - file: custom-styles.tex
+      - text:
+          \usepackage{tikz}
+    toc: true
+    toc-depth: 2
+bibliography: python-bibliography.bib
+---
+
+# Drawing diagrams in LaTeX
+
+## TikZ
+
+[TikZ](https://en.wikipedia.org/wiki/PGF/TikZ) is incredibly powerful and flexible, here's an [example diagram from a StackOverflow question](https://tex.stackexchange.com/a/635164).
+
+\begin{tikzpicture}
+\draw   (0,0) circle[radius=10mm] node [yshift=-13mm] {Unit Circle};
+\fill   (0,0) circle[radius=1pt]  node [above,font=\small] {$P$};
+\draw   (0,0) -- node [above,font=\small] {$a$} (1,0);
+%
+\fill[gray] (3,0) circle[radius=10mm] node [text=black,yshift=-13mm] {Disc};
+\end{tikzpicture}
+
+# K Means Clustering in Python
+
+The scikit-learn library [@pedregosafabian-scikit-learn-2011] contains an implementation of the k-means clustering method.
+
+\par
+
+One of the important equations in k-means clustering is shown below [@eq-k-means-assignment-step].
+
+$$
+\underset{\mathbf{S}}{\arg \min } \sum_{i=1}^k \frac{1}{\left|S_i\right|} \sum_{\mathbf{x}, \mathbf{y} \in S_i}\|\mathbf{x}-\mathbf{y}\|^2
+$$ {#eq-k-means-assignment-step}
+
+## Penguins clusters
+
+The Palmer Penguins dataset is a great tool for showing how k-means clustering performs.
+
+```{python}
+# | echo: false
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+pd.options.mode.chained_assignment = None
+
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
+
+(
+    ggplot(penguins_cleaned_df, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```
+
+# References
+
+::: {#refs}
+:::

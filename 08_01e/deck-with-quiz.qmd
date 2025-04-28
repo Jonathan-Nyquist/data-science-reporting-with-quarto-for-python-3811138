@@ -1,0 +1,14 @@
+---
+title: Quarto quiz!
+format: revealjs
+revealjs-plugins:
+  - quiz
+---
+
+## Quarto let's you run which languages? {.quiz-question}
+
+- R
+- Python
+- Julia
+- Observable
+- [All of the above!]{.correct}

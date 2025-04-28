@@ -1,0 +1,46 @@
+---
+title: "Penguin Clustering"
+format: 
+    docx:
+        toc: true
+        toc-depth: 2
+        reference-doc: "word-reference.docx"
+crossref:
+  chapters: true
+---
+
+Note that the numbering here is setup via both the YAML and reference doc.
+
+# Penguins
+
+## About the data
+
+Let's make a table:
+
+```{python}
+# | label: tbl-penguins
+# | tbl-cap: "The first 10 rows of the Penguins dataset"
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+penguins.head(10)
+```
+
+## Visualising the data
+
+### Bills and Flippers
+
+```{python}
+# | label: fig-scatter-flip-and-bill
+# | fig-cap: "Scatter plot of bill length and flipper length"
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from palmerpenguins import load_penguins
+(
+    ggplot(penguins, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```
+
+## Modelling the data
+
+We can...

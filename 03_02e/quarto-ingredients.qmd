@@ -1,0 +1,68 @@
+---
+title: Palmer Penguins Report
+format: revealjs
+echo: true
+---
+
+## About penguins
+
+```{python}
+# | echo: false
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+
+penguins = load_penguins()
+penguins_cleaned = penguins.dropna()
+```
+
+The *palmer penguins* dataset contains information about `{python} len(penguins)` penguins, after **discarding** rows with NA values there are `{python} len(penguins_cleaned)` penguins left.
+
+<img src='palmer-penguins_by-allison-horst.png' width='40%'/>
+
+Image Credit: Allison Horst
+
+## The data
+
+```{python}
+penguins_cleaned.head()
+```
+
+## Bills vs Flippers
+
+The penguins are differentiated by both island and species, but there is clearer clustering by species when looking at the variables: `bill_length_mm` and `flipper_length_mm`.
+
+::: {.panel-tabset}
+
+### Island
+
+```{python}
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+(
+    ggplot(penguins_cleaned, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(island)"))
+    + geom_point()
+)
+```
+
+### Sex
+
+```{python}
+(
+    ggplot(penguins_cleaned, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(sex)"))
+    + geom_point()
+)
+```
+
+### Species
+
+```{python}
+(
+    ggplot(penguins_cleaned, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```
+
+:::

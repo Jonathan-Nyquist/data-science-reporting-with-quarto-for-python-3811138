@@ -1,0 +1,25 @@
+---
+title: "Branded presentation"
+format: revealjs
+---
+
+## Presentations are different
+
+There are additional layouts in `format: revealjs` and these are styled with [revealjs](https://revealjs.com/) rather than Bootstrap.
+
+But! Branding still applies!
+
+```{python}
+# | output-location: column
+# | echo: true
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+(
+    ggplot(penguins, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```
+
+# Use brand colours {background-color='{{< brand color danger >}}'}

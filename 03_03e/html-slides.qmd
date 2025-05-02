@@ -1,0 +1,64 @@
+---
+title: "Markdown in slides"
+format: revealjs
+---
+
+# Standard Markdown
+
+These are the standard markdown formats available in almost all Markdown implementations
+
+- *italics*
+
+- **bold**
+
+- Enumerate and numbered lists
+
+1. Hyperlinks [https://learning.linkedin.com/](LinkedIn Learning)
+
+1. Code can look like code `2 + 2`
+
+## Images
+
+1. Images can be inserted, but be aware revealjs slides have a maximum height!
+
+![](logo-quarto.png){#fig-quarto-logo}
+
+
+# Advanced Markdown in Quarto
+
+There's lots of advanced Markdown available in Quarto. Some of which includes
+
+## Tables
+
+There are multiple Markdown table formats, see [Quarto docs for more info](https://quarto.org/docs/authoring/tables.html).
+
+| Species | Island | Bill Length |
+| :-- | :-- | :--: |
+| Adelie | | 39.1 |
+| Gentoo | Torgersen | 12 |
+
+## Fenced divs
+
+You can handily create `<div>` and `<span>` tags with pairs of `:::` and `[]` as [detailed in the Quarto docs](https://quarto.org/docs/authoring/markdown-basics.html#sec-divs-and-spans).
+
+### Tabset
+
+This produces tabbed content:
+
+::: {.panel-tabset}
+
+#### Lorem ipsum
+
+Lorem ipsum
+
+#### Python Code
+
+```{python}
+2 + 2
+```
+
+:::
+
+### Cross-References
+
+It's possible to cross reference images (@fig-quarto-logo), sections and code chunks.

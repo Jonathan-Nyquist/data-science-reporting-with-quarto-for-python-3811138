@@ -1,0 +1,37 @@
+---
+title: "Branded HTML report"
+format: 
+    html:
+        theme: report-styles.css
+brand: false
+---
+
+This Quarto HTML report uses a `_brand.yml` for styling that is designed to work across multiple formats, including; `html`, `dashboard`, `revealjs`. Learn more on [the dedicated website](https://posit-dev.github.io/brand-yml/).
+
+# Section header
+
+## Subsection header
+
+Let's make a table:
+
+```{python}
+# | label: tbl-penguins
+# | tbl-cap: "The first 10 rows of the Penguins dataset"
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+penguins.head(10)
+```
+
+And a chart
+
+```{python}
+# | label: fig-scatter-flip-and-bill
+# | fig-cap: "Scatter plot of bill length and flipper length"
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from palmerpenguins import load_penguins
+(
+    ggplot(penguins, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```

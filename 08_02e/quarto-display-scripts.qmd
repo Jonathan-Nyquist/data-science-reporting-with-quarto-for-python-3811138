@@ -1,0 +1,18 @@
+---
+title: "Displaying script files in Quarto"
+format: html
+filters:
+  - include-code-files
+---
+
+To *display* code nicely from other scripts you'll want to use the `include-code-files` extension.
+
+```{.python include="penguins-clustering.py" start-line=1 end-line=14  code-line-numbers="true"}
+```
+
+The . prefix is useful for writing code chunks that explicitly will never be *run*.
+
+```{.python code-line-numbers="true"}
+2 + 2
+2 / 0
+```

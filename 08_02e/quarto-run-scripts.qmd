@@ -1,0 +1,20 @@
+---
+title: "Run script files in Quarto"
+format: html
+---
+
+```{python}
+# | include: false
+%run penguins-clustering.py
+```
+
+# Palmer Penguins
+
+Out of `{python} penguins_confusion.sum().sum().item()` penguins, our model misclassified `{python} round(penguins_confusion_mismatch.sum().sum().item() / penguins_confusion.sum().sum().item(), 2) * 100`% of the penguins.
+
+The model has these parameters:
+
+- Number of Clusters: `{python} model_params["n_clusters"]`
+
+- Max Iterations: `{python} model_params["max_iter"]`
+

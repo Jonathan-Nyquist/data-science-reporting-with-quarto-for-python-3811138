@@ -1,0 +1,45 @@
+---
+title: "Typst requires a little effort"
+format:
+  typst:
+    include-in-header: 
+      - custom-styles.typ
+    toc: true
+    toc-depth: 2
+    number-sections: true
+bibliography: python-bibliography.bib
+---
+
+# K Means Clustering in Python
+
+The scikit-learn library [@pedregosafabian-scikit-learn-2011] contains an implementation of the k-means clustering method.
+
+One of the important equations in k-means clustering is shown below [@eq-k-means-assignment-step].
+
+$$
+\underset{\mathbf{S}}{\arg \min } \sum_{i=1}^k \frac{1}{\left|S_i\right|} \sum_{\mathbf{x}, \mathbf{y} \in S_i}\|\mathbf{x}-\mathbf{y}\|^2
+$$ {#eq-k-means-assignment-step}
+
+## Penguins clusters
+
+The Palmer Penguins dataset is a great tool for showing how k-means clustering performs.
+
+```{python}
+# | echo: false
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import KMeans
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+pd.options.mode.chained_assignment = None
+
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
+
+(
+    ggplot(penguins_cleaned_df, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```

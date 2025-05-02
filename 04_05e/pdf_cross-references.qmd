@@ -1,0 +1,68 @@
+---
+title: "Cross References"
+format:
+  pdf:
+    include-in-header:
+      text: |
+        \usepackage{chngcntr}
+        \counterwithin{figure}{section}
+        \counterwithin{table}{section}
+number-sections: true
+crossref:
+  chapters: true
+echo: false
+---
+
+# Cross References
+
+## Images
+
+To cross reference to an image you should prefix your tags with fig, eg  [@fig-penguins]
+
+![](palmer-penguins_by-allison-horst.png){#fig-penguins width=50%}
+
+To do this with an image tag you need a fenced div: [@fig-lil-logo]
+
+::: {#fig-lil-logo}
+\includegraphics[width=0.3\textwidth]{lil-logo.jpg}
+:::
+
+# Sections 
+
+To cross-reference sections use the `sec` prefix, eg [@sec-code-output]
+
+## Code output {#sec-code-output}
+
+Use the `label` chunk option to make output cross-referencable.
+
+To cross-reference tables use the `tbl` prefix, [@tbl-penguins]
+
+
+```{python}
+# | label: tbl-penguins
+# | tbl-cap: ""
+# https://github.com/quarto-dev/quarto-cli/issues/3603
+import pandas as pd
+import numpy as np
+from palmerpenguins import load_penguins
+
+pd.options.mode.chained_assignment = None
+penguins = load_penguins()
+penguins_cleaned = penguins.dropna()
+penguins_cleaned.head()
+```
+
+As with embedding images, captions for chunks outputting charts should use the `fig` prefix, [@fig-scatter-flip-and-bill].
+
+```{python}
+# | label: fig-scatter-flip-and-bill
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from palmerpenguins import load_penguins
+(
+    ggplot(penguins_cleaned, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```
+
+The cross-reference hyperlinks are anchor links - [@fig-penguins]

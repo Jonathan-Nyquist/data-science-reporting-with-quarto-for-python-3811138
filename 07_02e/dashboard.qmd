@@ -1,0 +1,63 @@
+---
+title: "Dashboard using Bootstrap's SCSS variables"
+format: 
+  dashboard:
+    theme: dashboard-styles.scss
+---
+
+## Row {height=30%}
+
+::: {.card}
+The dashboard format uses Bootstrap styles and [specially formatted HTML to layout content](https://quarto.org/docs/dashboards/layout.html).
+
+Headings are functional in the layout. Boostrap's SCSS variables for cards have been modified to show them working.
+:::
+
+```{python}
+# | content: valuebox
+# | title: "Traffic"
+import random
+traffic_bool = bool(random.getrandbits(1))
+dict(
+    value=50 if traffic_bool else -50,
+    icon="arrow-up" if traffic_bool else "arrow-down",
+    color="success" if traffic_bool else "danger"
+)
+```
+
+```{python}
+# | content: valuebox
+# | title: "Unique Visitors"
+import random
+visitors_bool = not traffic_bool
+dict(
+    value=50 if visitors_bool else -50,
+    icon="arrow-up" if visitors_bool else "arrow-down",
+    color="success" if visitors_bool else "danger"
+)
+```
+
+## Row {.tabset}
+
+```{python}
+# | title: "Penguins table"
+# | label: tbl-penguins
+# | tbl-cap: "The first 10 rows of the Penguins dataset"
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+penguins.head(10)
+```
+
+```{python}
+# | title: "Penguins chart"
+# | label: fig-scatter-flip-and-bill
+# | fig-cap: "Scatter plot of bill length and flipper length"
+# | warning: false
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from palmerpenguins import load_penguins
+(
+    ggplot(penguins, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```

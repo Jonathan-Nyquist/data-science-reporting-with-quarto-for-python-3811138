@@ -1,0 +1,30 @@
+meta: 
+  name: Fictional Company
+
+logo: 
+  medium: li_logo.png
+
+color:
+  palette:
+    neutral: "#F9F7F1" 
+    brand-blue: "#3172AD"
+    rag-green: "#06402B"
+    rag-red: "#B33134"
+  background: neutral
+  foreground: black
+  primary: brand-blue
+  secondary: saddlebrown
+  info: red
+  success: rag-green
+  danger: rag-red
+
+typography:
+  headings:
+    family: Montserrat
+    weight: 700
+    color: primary
+  monospace: Fira Code
+
+  link:
+    color: maroon
+    decoration: underline

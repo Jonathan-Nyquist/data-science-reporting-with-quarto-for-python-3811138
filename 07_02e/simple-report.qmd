@@ -1,0 +1,43 @@
+---
+title: "Report using Bootstrap's SCSS variables"
+format: 
+  html:
+    theme: report-styles.scss
+---
+
+Quarto can be styled with <span style='color:purple'>CSS and SCSS</span>.
+
+These Quarto formats make use of Bootstrap and therefore also support all [1,400+ of the SCSS variables defined within Bootstrap](https://quarto.org/docs/output-formats/html-themes.html):
+
+- `format: html`
+
+- `format: dashboard`
+
+# Section header
+
+## Subsection header
+
+Let's make a table:
+
+```{python}
+# | label: tbl-penguins
+# | tbl-cap: "The first 10 rows of the Penguins dataset"
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+penguins.head(10)
+```
+
+And a chart
+
+```{python}
+# | label: fig-scatter-flip-and-bill
+# | fig-cap: "Scatter plot of bill length and flipper length"
+# | warning: false
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from palmerpenguins import load_penguins
+(
+    ggplot(penguins, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```

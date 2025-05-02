@@ -1,0 +1,22 @@
+---
+title: "Palmer Penguins Report"
+format: 
+  docx:
+    reference-doc: custom-reference-doc.docx
+---
+
+
+```{python}
+# | echo: false
+from palmerpenguins import load_penguins
+
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
+```
+
+Some text
+
+```{python}
+penguins_cleaned_df.groupby(
+    ['species'])['species'].count().sort_values().to_frame()
+```

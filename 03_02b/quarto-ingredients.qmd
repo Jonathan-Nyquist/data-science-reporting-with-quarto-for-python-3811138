@@ -1,6 +1,6 @@
 ---
 title: Palmer Penguins Report
-format: revealjs
+format: html
 echo: true
 ---
 

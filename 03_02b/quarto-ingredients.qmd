@@ -1,7 +1,7 @@
 ---
 title: Palmer Penguins Report
 format: html
-echo: true
+echo: false
 ---
 
 ## About penguins
@@ -18,7 +18,7 @@ penguins_cleaned = penguins.dropna()
 
 The *palmer penguins* dataset contains information about `{python} len(penguins)` penguins, after **discarding** rows with NA values there are `{python} len(penguins_cleaned)` penguins left.
 
-<img src='palmer-penguins_by-allison-horst.png' width='40%'/>
+<img src='palmer-penguins_by-allison-horst.png' width='100%'/>
 
 Image Credit: Allison Horst
 

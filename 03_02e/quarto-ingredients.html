@@ -204,13 +204,13 @@
 <h2>About penguins</h2>
 <p>The <em>palmer penguins</em> dataset contains information about 344 penguins, after <strong>discarding</strong> rows with NA values there are 333 penguins left.</p>
 
-<img src="palmer-penguins_by-allison-horst.png" width="40%" class="r-stretch"><p>Image Credit: Allison Horst</p>
+<img src="palmer-penguins_by-allison-horst.png" width="100%" class="r-stretch"><p>Image Credit: Allison Horst</p>
 </section>
 <section id="the-data" class="slide level2">
 <h2>The data</h2>
-<div id="732386dc" class="cell" data-execution_count="2">
+<div id="d3b4e346" class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a>penguins_cleaned.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 <style scoped="">
     .dataframe tbody tr th:only-of-type {
@@ -310,7 +310,7 @@
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Island</a></li><li><a href="#tabset-1-2">Sex</a></li><li><a href="#tabset-1-3">Species</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1">
-<div id="26346abf" class="cell" data-execution_count="3">
+<div id="e49714ca" class="cell" data-execution_count="3">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_point, aes, stat_smooth, facet_wrap</span>
 <span id="cb2-2"><a href=""></a>(</span>
 <span id="cb2-3"><a href=""></a>    ggplot(penguins_cleaned, aes(<span class="st">"bill_length_mm"</span>,</span>
@@ -327,7 +327,7 @@
 </div>
 </div>
 <div id="tabset-1-2">
-<div id="75ad7b4d" class="cell" data-execution_count="4">
+<div id="9e1c588e" class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href=""></a>(</span>
 <span id="cb3-2"><a href=""></a>    ggplot(penguins_cleaned, aes(<span class="st">"bill_length_mm"</span>,</span>
 <span id="cb3-3"><a href=""></a>           <span class="st">"flipper_length_mm"</span>, color<span class="op">=</span><span class="st">"factor(sex)"</span>))</span>
@@ -343,7 +343,7 @@
 </div>
 </div>
 <div id="tabset-1-3">
-<div id="d7802336" class="cell" data-execution_count="5">
+<div id="e902b1e4" class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href=""></a>(</span>
 <span id="cb4-2"><a href=""></a>    ggplot(penguins_cleaned, aes(<span class="st">"bill_length_mm"</span>,</span>
 <span id="cb4-3"><a href=""></a>           <span class="st">"flipper_length_mm"</span>, color<span class="op">=</span><span class="st">"factor(species)"</span>))</span>

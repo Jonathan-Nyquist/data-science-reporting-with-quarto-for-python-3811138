@@ -21,7 +21,7 @@ These are the standard markdown formats available in almost all Markdown impleme
 
 1. Images can be inserted, but be aware revealjs slides have a maximum height!
 
-![](logo-quarto.png){#fig-quarto-logo}
+![](lil-logo.png){#fig-lil-logo}
 
 
 # Advanced Markdown in Quarto
@@ -61,4 +61,4 @@ Lorem ipsum
 
 ### Cross-References
 
-It's possible to cross reference images (@fig-quarto-logo), sections and code chunks.
+It's possible to cross reference images (@fig-fig-lil-logo), sections and code chunks.

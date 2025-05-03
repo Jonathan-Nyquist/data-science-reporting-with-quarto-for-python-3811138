@@ -7,11 +7,11 @@ format: html
 
 Using Markdown
 
-![](lil-logo.png){width="50px"}
+![](lil-logo.png){width="100px"}
 
 Using explicit HTML
 
-<img src="lil-logo.png" width="30%"/>
+<img src="lil-logo.png" width="50%"/>
 
 # Fancier image insertion
 

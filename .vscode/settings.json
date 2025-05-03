@@ -21,5 +21,10 @@
   "workbench.fontAliasing": "antialiased",
   "workbench.statusBar.visible": true,
   "quarto.path": "",
-  "editor.codeLens": false
+  "editor.codeLens": false,
+  "github.copilot.enable": {
+    "*": false,
+    "quarto": false,
+    "jsonc": false
+  }
 }

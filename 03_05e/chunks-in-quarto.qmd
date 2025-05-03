@@ -3,3 +3,24 @@ title: "Chunks in Quarto"
 format: html
 ---
 
+
+```{python}
+import random
+big_random = random.randint(1, 999) * 1E6
+big_random
+```
+
+Let's make a smaller number
+
+
+```{python}
+small_random = random.randint(1, 999)
+small_random
+```
+
+Let's add those together
+
+
+```{python}
+big_random + small_random
+```

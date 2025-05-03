@@ -10,10 +10,10 @@ from palmerpenguins import load_penguins
 import pandas as pd
 import numpy as np
 
-penguins = load_penguins()
-penguins_cleaned = penguins.dropna()
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
 
-species_counts = penguins_cleaned['species'].value_counts()
+species_counts = penguins_cleaned_df['species'].value_counts()
 ```
 
 # Matplotlib

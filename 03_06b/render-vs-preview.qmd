@@ -3,7 +3,7 @@ title: "Quarto: Render vs Preview"
 format: html
 ---
 
-Let's generate a few random numbers:
+Let's generate a few random numbers: Hello world and everyone!
 
 ```{python}
 import random

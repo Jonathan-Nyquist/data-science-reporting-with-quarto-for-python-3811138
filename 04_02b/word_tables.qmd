@@ -13,7 +13,7 @@ format:
 | Chinstrap | Pygoscelis antarcticus  | 1781 |
 | Gentoo | Pygoscelis papua | 1781 |
 
-# Better tables
+# Tables of data
 
 ```{python}
 from palmerpenguins import load_penguins

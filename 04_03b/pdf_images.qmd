@@ -11,11 +11,11 @@ format:
 
 Using Markdown
 
-![](palmer-penguins_by-allison-horst.png){width="4in"}
+![](lil-logo.png){width="4in"}
 
 Using includegraphics:
 
-\includegraphics[width=0.3\textwidth]{palmer-penguins_by-allison-horst.png}
+\includegraphics[width=0.3\textwidth]{lil-logo.png}
 
 # Fancier image insertion
 
@@ -23,7 +23,7 @@ Using includegraphics:
 
 \begin{minipage}{\columnwidth}
     \centering
-    \includegraphics[width=0.9\columnwidth]{palmer-penguins_by-allison-horst.png}
+    \includegraphics[width=0.9\columnwidth]{lil-logo.png}
 \end{minipage}
 
 With LaTeX things are more complicated with image placement. This solution combines `multicols` with `minipage` which provides the best balance between simplicity and flexibility.

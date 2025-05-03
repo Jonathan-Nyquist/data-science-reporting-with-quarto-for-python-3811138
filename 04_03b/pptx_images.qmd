@@ -11,7 +11,7 @@ You can use Markdown. Note that this slide uses the "Content with Caption" layou
 
 Note that the image width is ignored. Instead the image size is determined by the PowerPoint layout.
 
-![](palmer-penguins_by-allison-horst.png){width="1in"}
+![](lil-logo.png){width="1in"}
 
 ## Comparison Format
 
@@ -25,6 +25,6 @@ For it to work the column containing an image **must** have text before the imag
 ::: {.column}
 This format would not work without *this* text being present.
 
-![](palmer-penguins_by-allison-horst.png)
+![](lil-logo.png)
 :::
 :::

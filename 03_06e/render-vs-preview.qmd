@@ -1,7 +1,13 @@
 ---
 title: "Quarto: Render vs Preview"
 format: html
+editor:
+  render-on-save: true
+execute:
+  cache: true
 ---
+
+Hello world and everyone!!!
 
 Let's generate a few random numbers:
 

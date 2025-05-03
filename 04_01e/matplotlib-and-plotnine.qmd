@@ -10,10 +10,10 @@ from palmerpenguins import load_penguins
 import pandas as pd
 import numpy as np
 
-penguins = load_penguins()
-penguins_cleaned = penguins.dropna()
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
 
-species_counts = penguins_cleaned['species'].value_counts()
+species_counts = penguins_cleaned_df['species'].value_counts()
 ```
 
 # Matplotlib
@@ -34,7 +34,7 @@ For most flexibility, save chart as an image and then use Quarto formatting of i
 plot.savefig("matplotlib_bar.png")
 ```
 
-![](matplotlib_bar.png){width="30%"}
+![](matplotlib_bar.png){width="75%"}
 
 # Plotnine
 
@@ -53,7 +53,7 @@ pn_species_col
 Again, export as image for most flexibility
 
 ```{python}
-pn_species_col.save("plotnine_bar.png", dpi=300)
+pn_species_col.save('plotnine_bar.png')
 ```
 
-<img src="plotnine_bar.png" width="600px"/>
+<img src="plotnine_bar.png" width="250px"/>

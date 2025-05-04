@@ -17,12 +17,14 @@ echo: false
 
 To cross reference to an image you should prefix your tags with fig, eg  [@fig-lil-logo]
 
-![](lil-logo.jpg){#fig-lil-logo width=50%}
+![LiL logo with blue background.](lil-logo.jpg){#fig-lil-logo width=50%}
 
-To do this with an image tag you need a fenced div: [@fig-lil-logo-alternative]
+To do this with `\includegraphics` you need a fenced div: [@fig-lil-logo-alternative]
 
 ::: {#fig-lil-logo-alternative}
 \includegraphics[width=0.3\textwidth]{lil-logo_alternative.png}
+
+Captions for `\includegraphics` go here
 :::
 
 # Sections 

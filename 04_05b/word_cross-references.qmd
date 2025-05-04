@@ -8,15 +8,13 @@ crossref:
 echo: false
 ---
 
-# Cross References
-
-## Warning about cross-references in docx
+# Warning about cross-references in docx
 
 Cross references are essentially read-only. The ouput file will be correctly numbered, but they won't update with new content.
 
 Currently, the captions will be inserted into a table, see https://github.com/quarto-dev/quarto-cli/issues/4004.
 
-## Images
+# Images
 
 To cross reference to an image you should prefix your tags with fig, eg  [@fig-lil-logo]
 

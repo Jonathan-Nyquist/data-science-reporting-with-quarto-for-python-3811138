@@ -13,9 +13,7 @@ crossref:
 echo: false
 ---
 
-# Cross References
-
-## Images
+# Images
 
 To cross reference to an image you should prefix your tags with fig, eg  [@fig-lil-logo]
 

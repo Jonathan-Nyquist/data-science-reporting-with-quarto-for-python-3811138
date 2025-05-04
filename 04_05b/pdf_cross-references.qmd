@@ -24,7 +24,7 @@ To cross reference to an image you should prefix your tags with fig, eg  [@fig-l
 To do this with an image tag you need a fenced div: [@fig-lil-logo-alternative]
 
 ::: {#fig-lil-logo-alternative}
-\includegraphics[width=0.3\textwidth]{lil-logo_alternative.jpg}
+\includegraphics[width=0.3\textwidth]{lil-logo_alternative.png}
 :::
 
 # Sections 

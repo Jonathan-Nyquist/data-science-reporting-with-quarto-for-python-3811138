@@ -11,7 +11,7 @@ penguins_cleaned_df = penguins_df.dropna()
 selected_features = ["bill_length_mm", "flipper_length_mm"]
 
 model_params = {"n_clusters": 3,
-                "max_iter": 1}
+                "max_iter": 300}
 
 penguins_data_df = penguins_cleaned_df.copy()
 

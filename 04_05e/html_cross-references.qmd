@@ -7,19 +7,20 @@ crossref:
 echo: false
 ---
 
-# Cross References
+# Images
 
-## Images
+To cross reference to an image you should prefix your tags with fig, eg  [@fig-lil-logo]
 
-To cross reference to an image you should prefix your tags with fig, eg  [@fig-penguins]
+![LiL logo with blue background.](lil-logo.jpg){#fig-lil-logo width=50%}
 
-![](palmer-penguins_by-allison-horst.png){#fig-penguins width=50%}
+To do this with an image tag you need a fenced div: [@fig-lil-logo-alternative]
 
-To do this with an image tag you need a fenced div: [@]
+::: {#fig-lil-logo-alternative}
+<img src="lil-logo_alternative.png" width="50%"/>
 
-::: {#fig-lil-logo}
-<img src="lil-logo.jpg" width="50%"/>
+Image tag captions need to be formatted like this.
 :::
+
 
 # Sections 
 
@@ -59,4 +60,4 @@ from palmerpenguins import load_penguins
 )
 ```
 
-The cross-reference hyperlinks are anchor links - [@fig-penguins]
+The cross-reference hyperlinks are anchor links - [@fig-lil-logo]

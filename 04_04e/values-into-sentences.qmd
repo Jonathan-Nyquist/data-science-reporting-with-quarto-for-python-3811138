@@ -7,15 +7,15 @@ format: html
 import pandas as pd
 from palmerpenguins import load_penguins
 
-penguins = load_penguins()
-penguins_cleaned = penguins.dropna()
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
 ```
 
-There are `{python} len(penguins)` values in the penguins dataset, `{python} round(100 * (1 - len(penguins_cleaned) / len(penguins)), 2)`% of the rows have NA values.
+There are `{python} len(penguins_df)` values in the penguins dataset, `{python} round(100 * (1 - len(penguins_cleaned_df) / len(penguins_df)), 2)`% of the rows have NA values.
 
 ```{python}
-species_counts = penguins_cleaned['species'].value_counts()
-species_most_commom = species_counts.index[0]
+species_counts = penguins_cleaned_df['species'].value_counts()
+species_most_common = species_counts.index[0]
 ```
 
-The most common species is `{python} species_most_commom`.
+The most common species is `{python} species_most_common`.

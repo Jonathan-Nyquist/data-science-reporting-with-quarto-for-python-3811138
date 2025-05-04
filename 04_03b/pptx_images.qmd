@@ -1,5 +1,5 @@
 ---
-title: "Quarto Tables in PowerPoint"
+title: "Quarto Images in PowerPoint"
 format:
   pptx:
     reference-doc: powerpoint-reference.pptx

@@ -1,5 +1,5 @@
 ---
-title: "Quarto Tables in HTML"
+title: "Quarto Images in HTML"
 format: html
 ---
 

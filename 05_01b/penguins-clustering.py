@@ -11,7 +11,7 @@ penguins_cleaned_df = penguins_df.dropna()
 selected_features = ["bill_length_mm", "flipper_length_mm"]
 
 model_params = {"n_clusters": 3,
-                "max_iter": 300}
+                "max_iter": 1}
 
 penguins_data_df = penguins_cleaned_df.copy()
 
@@ -28,8 +28,10 @@ penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)
 penguins_data_df.loc[:, "cluster"] = penguin_predictions
 
 # Label cluster by the most common species found in the cluster
-cluster_species_df = penguins_data_df.groupby(
-    "species")["cluster"].agg(lambda x: x.value_counts().index[0]).reset_index()
+cluster_species = penguins_data_df.groupby(
+    "species")["cluster"].agg(lambda x: x.value_counts().index[0])
+
+cluster_species_df = cluster_species.reset_index()
 
 # Insert cluster ids into data and then replace with the
 # species label for pretty displaying
@@ -39,8 +41,10 @@ cluster_species_df['cluster'] = cluster_species_df['cluster'].astype(str)
 penguins_data_df.loc[:, "cluster"] = penguins_data_df["cluster"].map(
     cluster_species_df.set_index("cluster")["species"])
 
+
 cols_compare = ["species",
                 "cluster", "bill_length_mm", "flipper_length_mm"]
+
 penguins_selected_df = penguins_data_df[cols_compare]
 
 penguins_selected_df = penguins_selected_df.rename(columns={

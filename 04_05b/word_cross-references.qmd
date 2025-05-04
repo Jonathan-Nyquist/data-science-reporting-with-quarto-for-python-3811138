@@ -18,9 +18,9 @@ Currently, the captions will be inserted into a table, see https://github.com/qu
 
 ## Images
 
-To cross reference to an image you should prefix your tags with fig, eg  [@fig-penguins]
+To cross reference to an image you should prefix your tags with fig, eg  [@fig-lil-logo]
 
-![](palmer-penguins_by-allison-horst.png){#fig-penguins width=50%}
+![](lil-logo.jpg){#fig-lil-logo width=50%}
 
 # Sections 
 
@@ -60,4 +60,4 @@ from palmerpenguins import load_penguins
 )
 ```
 
-The cross-reference hyperlinks are anchor links - [@fig-penguins]
+The cross-reference hyperlinks are anchor links - [@fig-lil-logo]

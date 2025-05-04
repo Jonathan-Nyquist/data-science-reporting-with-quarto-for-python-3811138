@@ -17,14 +17,14 @@ echo: false
 
 ## Images
 
-To cross reference to an image you should prefix your tags with fig, eg  [@fig-penguins]
+To cross reference to an image you should prefix your tags with fig, eg  [@fig-lil-logo]
 
-![](palmer-penguins_by-allison-horst.png){#fig-penguins width=50%}
+![](lil-logo.jpg){#fig-lil-logo width=50%}
 
-To do this with an image tag you need a fenced div: [@fig-lil-logo]
+To do this with an image tag you need a fenced div: [@fig-lil-logo-alternative]
 
-::: {#fig-lil-logo}
-\includegraphics[width=0.3\textwidth]{lil-logo.jpg}
+::: {#fig-lil-logo-alternative}
+\includegraphics[width=0.3\textwidth]{lil-logo_alternative.jpg}
 :::
 
 # Sections 
@@ -65,4 +65,4 @@ from palmerpenguins import load_penguins
 )
 ```
 
-The cross-reference hyperlinks are anchor links - [@fig-penguins]
+The cross-reference hyperlinks are anchor links - [@fig-lil-logo]

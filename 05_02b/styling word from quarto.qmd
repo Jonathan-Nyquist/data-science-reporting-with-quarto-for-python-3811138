@@ -15,8 +15,8 @@ Let's make a table:
 # | label: tbl-penguins
 # | tbl-cap: "The first 10 rows of the Penguins dataset"
 from palmerpenguins import load_penguins
-penguins = load_penguins()
-penguins.head(10)
+penguins_df = load_penguins()
+penguins_df.head(10)
 ```
 
 And a chart
@@ -25,11 +25,10 @@ And a chart
 ```{python}
 # | label: fig-scatter-flip-and-bill
 # | fig-cap: "Scatter plot of bill length and flipper length"
-from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
-from palmerpenguins import load_penguins
+import plotnine as pn
 (
-    ggplot(penguin, aes("bill_length_mm",
-           "flipper_length_mm", color="factor(species)"))
-    + geom_point()
+    pn.ggplot(penguins_df, pn.aes("bill_length_mm",
+                                  "flipper_length_mm", color="factor(species)"))
+    + pn.geom_point()
 )
 ```

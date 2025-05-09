@@ -18,7 +18,7 @@ bibliography: python-bibliography.bib
 [TikZ](https://en.wikipedia.org/wiki/PGF/TikZ) is incredibly powerful and flexible, here's an [example diagram from a StackOverflow question](https://tex.stackexchange.com/a/635164).
 
 \begin{tikzpicture}
-\draw   (0,0) circle[radius=10mm] node [yshift=-13mm] {Unit Circle};
+\draw   (0,0) circle[radius=10mm] node [yshift=-13mm] {Unit\_Circle};
 \fill   (0,0) circle[radius=1pt]  node [above,font=\small] {$P$};
 \draw   (0,0) -- node [above,font=\small] {$a$} (1,0);
 %

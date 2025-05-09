@@ -1,8 +1,6 @@
 ---
 title: "Styling Quarto from PowerPoint"
-format:
-  pptx:
-    reference-doc: powerpoint-reference.pptx
+format: pptx
 ---
 
 ## Content with Caption

@@ -1,15 +1,15 @@
 ---
 title: "Penguin Clustering"
 format: 
-    docx:
-        toc: true
-        toc-depth: 2
-        reference-doc: "word-reference.docx"
+  docx:
+      reference-doc: custom-reference-doc.docx
+      toc: true
+      toc-depth: 2
 crossref:
   chapters: true
 ---
 
-Note that the numbering here is setup via both the YAML and reference doc.
+Everything in a Quarto doc can be styled if you use a reference doc.
 
 # Penguins
 

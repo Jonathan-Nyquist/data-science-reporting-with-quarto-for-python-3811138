@@ -1,13 +1,5 @@
 /*-- scss:defaults --*/
-$font-size-base: 16px;
-$h1-font-size: $font-size-base * 3;
-$h2-font-size: $font-size-base * 2;
-$headings-color: orange;
-$card-border-width: 5px;
-$card-border-color: purple;
-
-/*-- Normal CSS --*/
-
-p {
-  line-height: 1.5;
-}
+$body-bg: #191919;
+$body-color: #fff;
+$code-color: #C06C84;
+$code-block-color: #C06C84;

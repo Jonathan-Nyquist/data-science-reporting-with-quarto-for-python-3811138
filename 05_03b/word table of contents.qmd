@@ -1,8 +1,8 @@
 ---
 title: "Penguin Clustering"
 format: 
-    docx:
-        reference-doc: custom-reference-doc.docx
+  docx:
+      reference-doc: custom-reference-doc.docx
 ---
 
 Everything in a Quarto doc can be styled if you use a reference doc.

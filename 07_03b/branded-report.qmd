@@ -1,9 +1,5 @@
 ---
 title: "Branded HTML report"
-format: 
-    html:
-        theme: report-styles.css
-brand: false
 ---
 
 This Quarto HTML report uses a `_brand.yml` for styling that is designed to work across multiple formats, including; `html`, `dashboard`, `revealjs`. Learn more on [the dedicated website](https://posit-dev.github.io/brand-yml/).

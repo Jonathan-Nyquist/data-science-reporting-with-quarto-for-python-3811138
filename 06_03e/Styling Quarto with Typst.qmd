@@ -12,6 +12,8 @@ bibliography: python-bibliography.bib
 
 # K Means Clustering in Python
 
+In LaTeX you need to be careful about naked underscores, _
+
 The scikit-learn library [@pedregosafabian-scikit-learn-2011] contains an implementation of the k-means clustering method.
 
 One of the important equations in k-means clustering is shown below [@eq-k-means-assignment-step].

@@ -55,3 +55,8 @@ penguins_confusion = pd.crosstab(penguins_selected_df['predicted_species'],
 penguins_confusion_mismatch = penguins_confusion.copy()
 
 np.fill_diagonal(penguins_confusion_mismatch.values, 0)
+
+penguins_clust_long = pd.melt(penguins_selected_df,
+                              id_vars=["bill_length_mm", "flipper_length_mm"],
+                              var_name="measure",
+                              value_name="group")

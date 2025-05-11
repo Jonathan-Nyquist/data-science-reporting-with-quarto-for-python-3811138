@@ -3,15 +3,13 @@ title: "Commments"
 format: html
 ---
 
-# Headings <!-- HTML comments can go anywhere 
+# Headings <!-- HTML comments can go anywhere -->
 
 - bullet
 
 - point
 
 - list
-
--->
 
 ```{python}
 # this is a python comment

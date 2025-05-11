@@ -2,3 +2,24 @@
 title: "Quarto dashboards"
 format: dashboard
 ---
+
+# Palmer Penguins
+
+## About {height="40%"}
+
+::: {.card}
+
+All about the penguins...
+
+```{python}
+from palmerpenguins import load_penguins
+load_penguins()
+```
+
+:::
+
+## Charts {height="60%"}
+
+We will make some charts later
+
+# About

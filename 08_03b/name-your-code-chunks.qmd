@@ -1,9 +1,10 @@
 ---
 title: "Name your code chunks"
 format: html
+echo: false
 ---
 
-# Data processing
+# Data Processing
 
 ```{python}
 # | label: get-penguins-data
@@ -17,6 +18,10 @@ penguins_df = load_penguins()
 penguins_cleaned_df = penguins_df.dropna()
 ```
 
+The cleaned penguins dataset has `{python} len(penguins_cleaned_df)` rows.
+
+# Clustering
+
 ```{python}
 # | label: set-model-parameters
 selected_features = ["bill_length_mm", "flipper_length_mm"]
@@ -27,9 +32,16 @@ model_params = {"n_clusters": 3,
 penguins_data_df = penguins_cleaned_df.copy()
 
 features_df = penguins_data_df.loc[:, selected_features]
+
+cols_compare = ["species",
+                "cluster", "bill_length_mm", "flipper_length_mm"]
 ```
 
-# Clustering
+Our model has these parameters:
+
+- Number of Clusters: `{python} model_params["n_clusters"]`
+
+- Max Iterations: `{python} model_params["max_iter"]`
 
 ```{python}
 # | label: scale-features
@@ -46,7 +58,7 @@ penguin_predictions = kmeans_model.fit_predict(features_standard_scalar)
 penguins_data_df.loc[:, "cluster"] = penguin_predictions
 ```
 
-# Post processing data
+# Model performance
 
 ```{python}
 # | label: label-cluster-by-largest-cound
@@ -79,4 +91,21 @@ penguins_confusion_mismatch = penguins_confusion.copy()
 
 np.fill_diagonal(penguins_confusion_mismatch.values, 0)
 
+```
+
+Out of `{python} penguins_confusion.sum().sum().item()` penguins, our model misclassified `{python} round(penguins_confusion_mismatch.sum().sum().item() / penguins_confusion.sum().sum().item(), 2) * 100`% of the penguins.
+
+```{python}
+# | echo: true
+import plotnine as pn
+penguins_clust_long = pd.melt(penguins_selected_df,
+                              id_vars=["bill_length_mm", "flipper_length_mm"],
+                              var_name="measure",
+                              value_name="group")
+(
+    pn.ggplot(penguins_clust_long, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(group)"))
+    + pn.geom_point()
+    + pn.facet_wrap("measure")
+)
 ```

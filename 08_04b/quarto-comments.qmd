@@ -13,7 +13,7 @@ format: html
 
 ```{python}
 # this is a python comment
-some_variable = 1 / 1
+some_variable = 1 / 0
 ```
 
 

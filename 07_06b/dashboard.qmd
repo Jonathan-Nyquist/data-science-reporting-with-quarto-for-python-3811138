@@ -1,8 +1,6 @@
 ---
 title: "Quarto dashboards"
-format: 
-    dashboard:
-        embed-resources: true
+format: dashboard
 ---
 
 # Page 1

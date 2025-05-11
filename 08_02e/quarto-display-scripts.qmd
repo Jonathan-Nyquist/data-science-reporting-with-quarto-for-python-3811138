@@ -10,6 +10,19 @@ To *display* code nicely from other scripts you'll want to use the `include-code
 ```{.python include="penguins-clustering.py" start-line=1 end-line=14  code-line-numbers="true"}
 ```
 
+That doesn't mean the code has run!
+
+```{python}
+try:
+    penguins_df
+except NameError:
+    var_exists = False
+else:
+    var_exists = True
+
+var_exists
+```
+
 The . prefix is useful for writing code chunks that explicitly will never be *run*.
 
 ```{.python code-line-numbers="true"}

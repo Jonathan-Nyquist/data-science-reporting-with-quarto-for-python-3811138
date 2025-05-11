@@ -18,3 +18,14 @@ The model has these parameters:
 
 - Max Iterations: `{python} model_params["max_iter"]`
 
+```{python}
+# | echo: false
+import plotnine as pn
+(
+    pn.ggplot(penguins_clust_long, pn.aes("bill_length_mm",
+                                          "flipper_length_mm", color="factor(group)"))
+    + pn.geom_point()
+    + pn.facet_wrap("measure")
+)
+```
+

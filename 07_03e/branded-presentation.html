@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="branded-presentation_files/libs/clipboard/clipboard.min.js"></script>
+<script src="branded-presentation_files/libs/clipboard/clipboard.min.js"></script>
 <script src="branded-presentation_files/libs/quarto-html/tabby.min.js"></script>
 <script src="branded-presentation_files/libs/quarto-html/popper.min.js"></script>
 <script src="branded-presentation_files/libs/quarto-html/tippy.umd.min.js"></script>
@@ -185,9 +185,6 @@
       margin-right: 0; 
     }
   </style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
-  
-  <script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 </head>
 <body class="quarto-light">
   <div class="reveal">
@@ -204,7 +201,7 @@
 <h2>Presentations are different</h2>
 <p>There are additional layouts in <code>format: revealjs</code> and these are styled with <a href="https://revealjs.com/">revealjs</a> rather than Bootstrap.</p>
 <p>But! Branding still applies!</p>
-<div id="65fef720" class="cell columns column-output-location" data-execution_count="1">
+<div id="61a545d2" class="cell columns column-output-location" data-execution_count="1">
 <div class="column">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href=""></a><span class="im">from</span> plotnine <span class="im">import</span> ggplot, geom_point, aes, stat_smooth, facet_wrap</span>
 <span id="cb1-2"><a href=""></a><span class="im">from</span> palmerpenguins <span class="im">import</span> load_penguins</span>
@@ -224,189 +221,10 @@
 </div>
 </div></div>
 </section>
-<section>
 <section id="use-brand-colours" class="title-slide slide level1 center" data-background-color="#B33134">
 <h1>Use brand colours</h1>
 
 </section>
-<section id="tables-in-revealjs" class="slide level2">
-<h2>Tables in revealjs</h2>
-<div class="cell" data-execution_count="2">
-<div id="tbl-penguins" class="cell quarto-float quarto-figure quarto-figure-center" data-execution_count="2">
-<figure class="quarto-float quarto-float-tbl">
-<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Table&nbsp;1: The first 10 rows of the Penguins dataset
-</figcaption>
-<div aria-describedby="tbl-penguins-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="8">
-<div>
-<style scoped="">
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-
-<table class="dataframe do-not-create-environment cell caption-top" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header" style="text-align: right;">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">species</th>
-<th data-quarto-table-cell-role="th">island</th>
-<th data-quarto-table-cell-role="th">bill_length_mm</th>
-<th data-quarto-table-cell-role="th">bill_depth_mm</th>
-<th data-quarto-table-cell-role="th">flipper_length_mm</th>
-<th data-quarto-table-cell-role="th">body_mass_g</th>
-<th data-quarto-table-cell-role="th">sex</th>
-<th data-quarto-table-cell-role="th">year</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>39.1</td>
-<td>18.7</td>
-<td>181.0</td>
-<td>3750.0</td>
-<td>male</td>
-<td>2007</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>39.5</td>
-<td>17.4</td>
-<td>186.0</td>
-<td>3800.0</td>
-<td>female</td>
-<td>2007</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>40.3</td>
-<td>18.0</td>
-<td>195.0</td>
-<td>3250.0</td>
-<td>female</td>
-<td>2007</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>2007</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>36.7</td>
-<td>19.3</td>
-<td>193.0</td>
-<td>3450.0</td>
-<td>female</td>
-<td>2007</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>39.3</td>
-<td>20.6</td>
-<td>190.0</td>
-<td>3650.0</td>
-<td>male</td>
-<td>2007</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>38.9</td>
-<td>17.8</td>
-<td>181.0</td>
-<td>3625.0</td>
-<td>female</td>
-<td>2007</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>39.2</td>
-<td>19.6</td>
-<td>195.0</td>
-<td>4675.0</td>
-<td>male</td>
-<td>2007</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>34.1</td>
-<td>18.1</td>
-<td>193.0</td>
-<td>3475.0</td>
-<td>NaN</td>
-<td>2007</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>Adelie</td>
-<td>Torgersen</td>
-<td>42.0</td>
-<td>20.2</td>
-<td>190.0</td>
-<td>4250.0</td>
-<td>NaN</td>
-<td>2007</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-</figure>
-</div>
-</div>
-</section>
-<section id="charts-in-revealjs" class="slide level2">
-<h2>Charts in revealjs</h2>
-<div id="cell-fig-scatter-flip-and-bill" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-display">
-<div id="fig-scatter-flip-and-bill" class="quarto-float quarto-figure quarto-figure-center">
-<figure class="quarto-float quarto-float-fig">
-<div aria-describedby="fig-scatter-flip-and-bill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img data-src="branded-presentation_files/figure-revealjs/fig-scatter-flip-and-bill-output-1.png" width="960" height="480">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-flip-and-bill-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Scatter plot of bill length and flipper length
-</figcaption>
-</figure>
-</div>
-</div>
-</div>
-
-</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <p><img src="li_logo.png" class="slide-logo"></p>

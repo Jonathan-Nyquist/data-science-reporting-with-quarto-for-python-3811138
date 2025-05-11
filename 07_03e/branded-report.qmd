@@ -2,7 +2,7 @@
 title: "Branded HTML report"
 format: 
     html:
-        theme: report-styles.css
+        theme: report-styles.scss
 brand: false
 ---
 

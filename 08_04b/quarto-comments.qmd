@@ -3,7 +3,7 @@ title: "Commments"
 format: html
 ---
 
-# Headings <!-- HTML comments can go anywhere -->
+# Headings
 
 - bullet
 
@@ -11,10 +11,12 @@ format: html
 
 - list
 
-```{python}
-# this is a python comment
-some_variable = 1 / 0
-```
+<!--```{python}
+<!--# | eval: false
+<!--# this is a python comment
+<!--some_variable = 1 / 1
+<!--```
 
+-->
 
 The value of the variable is `{python} some_variable`

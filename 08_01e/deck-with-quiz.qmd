@@ -5,10 +5,16 @@ revealjs-plugins:
   - quiz
 ---
 
-## Quarto let's you run which languages? {.quiz-question}
+## Which of the Palmer Penguin species has the longest bill? {.quiz-question}
 
-- R
-- Python
-- Julia
-- Observable
-- [All of the above!]{.correct}
+```{python}
+from palmerpenguins import load_penguins
+penguins_df = load_penguins()
+
+average_bill_length = penguins_df.groupby(
+    'species')['bill_length_mm'].mean().sort_values(ascending=False)
+```
+
+- [`{python} average_bill_length.index[0]`]{.correct} 
+- `{python} average_bill_length.index[1]` 
+- `{python} average_bill_length.index[2]` 

@@ -1,0 +1,30 @@
+---
+title: "Quarto Images in PowerPoint"
+format:
+  pptx:
+    reference-doc: powerpoint-reference.pptx
+---
+
+## Simple image insertion
+
+You can use Markdown. Note that this slide uses the "Content with Caption" layout.
+
+Note that the image width is ignored. Instead the image size is determined by the PowerPoint layout.
+
+![](lil-logo.png){width="1in"}
+
+## Comparison Format
+
+::: columns
+::: {.column}
+This slide uses the comparison format.
+
+For it to work the column containing an image **must** have text before the image.
+:::
+
+::: {.column}
+This format would not work without *this* text being present.
+
+![](lil-logo.png)
+:::
+:::

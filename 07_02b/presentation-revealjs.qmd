@@ -1,0 +1,35 @@
+---
+title: "Presentation doesn't use Bootstrap"
+format: 
+  revealjs:
+    theme: presentation-styles.scss
+---
+
+Presentations built with the `revealjs` format don't use Bootstrap so you can't use those SASS variables here.
+
+But revealjs has its own SASS variables! 
+
+## Tables in revealjs
+
+```{python}
+# | label: tbl-penguins
+# | tbl-cap: "The first 10 rows of the Penguins dataset"
+from palmerpenguins import load_penguins
+penguins = load_penguins()
+penguins.head(10)
+```
+
+## Charts in revealjs
+
+```{python}
+# | label: fig-scatter-flip-and-bill
+# | fig-cap: "Scatter plot of bill length and flipper length"
+# | warning: false
+from plotnine import ggplot, geom_point, aes, stat_smooth, facet_wrap
+from palmerpenguins import load_penguins
+(
+    ggplot(penguins, aes("bill_length_mm",
+           "flipper_length_mm", color="factor(species)"))
+    + geom_point()
+)
+```

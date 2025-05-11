@@ -1,0 +1,55 @@
+---
+title: "Quarto Tables in HTML"
+format: html
+---
+
+# Markdown tables
+
+| Common Name | Latin Name | First identified in |
+|---------|:-----|:------:|
+| Adélie | Pygoscelis adeliae | 1841 |
+| Chinstrap | Pygoscelis antarcticus  | 1781 |
+| Gentoo | Pygoscelis papua | 1781 |
+
+# Static tables of data
+
+```{python}
+from palmerpenguins import load_penguins
+import pandas as pd
+import numpy as np
+
+penguins_df = load_penguins()
+penguins_df
+```
+
+# Interactive tables of data
+
+Interactive tables with [itables](https://mwouts.github.io/itables/quick_start.html)
+
+```{python}
+from itables import show
+show(penguins_df)
+```
+
+With some custom JS 
+
+```{python}
+from itables import JavascriptFunction
+show(
+    penguins_df,
+    columnDefs=[
+        {
+            "targets": [2, 3, 4, 5],
+            "createdCell": JavascriptFunction(
+                """
+function (td, cellData, rowData, row, col) {
+    if (isNaN(cellData)) {
+        $(td).css('color', 'red')
+    }
+}
+"""
+            ),
+        }
+    ]
+)    
+```

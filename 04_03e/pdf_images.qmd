@@ -1,0 +1,31 @@
+---
+title: "Quarto Images in PDF"
+format:
+  pdf:
+    include-in-header:
+      - text: |
+          \usepackage{multicol}
+---
+
+# Simple image insertion
+
+Using Markdown
+
+![](lil-logo.png){width="4in"}
+
+Using includegraphics:
+
+\includegraphics[width=0.3\textwidth]{lil-logo.png}
+
+# Fancier image insertion
+
+\begin{multicols}{2} % Two columns
+
+\begin{minipage}{\columnwidth}
+    \centering
+    \includegraphics[width=0.9\columnwidth]{lil-logo.png}
+\end{minipage}
+
+With LaTeX things are more complicated with image placement. This solution combines `multicols` with `minipage` which provides the best balance between simplicity and flexibility.
+
+\end{multicols}

@@ -1,0 +1,22 @@
+---
+title: "Quarto Images in Word"
+format: docx
+---
+
+# Simple image insertion
+
+Using Markdown
+
+![](lil-logo.png){width="4in"}
+
+# Fancier image insertion
+
+There isn't good multi-column support currently.
+
+However you can do things like insert images into tables.
+
+| Common Name | Latin Name | First identified in |
+|---------|:-----|:------:|
+| Adélie | Pygoscelis adeliae | 1841 |
+| Chinstrap | ![](lil-logo.png){width="1in"}  | 1781 |
+| Gentoo | Pygoscelis papua | 1781 |

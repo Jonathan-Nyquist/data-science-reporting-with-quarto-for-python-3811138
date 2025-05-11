@@ -1,0 +1,36 @@
+---
+title: "Penguin Clustering"
+format: 
+    docx:
+        reference-doc: custom-reference-doc.docx
+---
+
+Everything in a Quarto doc can be styled if you use a reference doc.
+
+# Section header
+
+## Subsection header
+
+Let's make a table:
+
+```{python}
+# | label: tbl-penguins
+# | tbl-cap: "The first 10 rows of the Penguins dataset"
+from palmerpenguins import load_penguins
+penguins_df = load_penguins()
+penguins_df.head(10)
+```
+
+And a chart
+
+
+```{python}
+# | label: fig-scatter-flip-and-bill
+# | fig-cap: "Scatter plot of bill length and flipper length"
+import plotnine as pn
+(
+    pn.ggplot(penguins_df, pn.aes("bill_length_mm",
+                                  "flipper_length_mm", color="factor(species)"))
+    + pn.geom_point()
+)
+```

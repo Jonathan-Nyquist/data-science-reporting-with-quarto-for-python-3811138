@@ -1,0 +1,28 @@
+---
+title: "Palmer Penguins"
+format: html
+echo: false
+---
+
+
+```{python}
+from palmerpenguins import load_penguins
+penguins_df = load_penguins()
+penguins_cleaned_df = penguins_df.dropna()
+
+species_count = penguins_cleaned_df.groupby(["species"])["species"].count().sort_values()
+```
+
+There are `{python} len(penguins_cleaned_df)` penguins in the dataset.
+
+The species with the smallest size was `{python} species_count.index[0]` with `{python} str(species_count.iloc[0])` members.
+
+To look at how the penguins vary by bill and flipper, take a look at [@fig-scatter-bill-and-flip]
+
+```{python}
+#| label: fig-scatter-bill-and-flip
+#| fig-cap: "Scatter plot of penguins"
+import plotnine as pn
+pn.ggplot(penguins_cleaned_df, pn.aes("bill_length_mm",
+          "flipper_length_mm", color="species")) + pn.geom_point()
+```
